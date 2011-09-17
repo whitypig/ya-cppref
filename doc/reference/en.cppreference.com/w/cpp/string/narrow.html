@@ -1,0 +1,1235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from en.cppreference.com/w/cpp/string/narrow by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 15:30:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+<head>
+<title>Narrow null-terminated strings - Cppreference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="MediaWiki 1.16.2" />
+<link rel="alternate" type="application/x-wiki" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow&amp;action=edit" />
+<link rel="edit" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow&amp;action=edit" />
+<link rel="shortcut icon" href="../../../favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="../../../mwiki/opensearch_desc.php" title="Cppreference (en)" />
+<link rel="alternate" type="application/atom+xml" title="Cppreference Atom feed" href="http://en.cppreference.com/mwiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../mwiki/skins/vector/main-ltr3905.css" media="screen" />
+<link rel="stylesheet" href="../../../mwiki/skins/common/shared3905.css" media="screen" />
+<link rel="stylesheet" href="../../../mwiki/skins/common/commonPrint3905.css" media="print" />
+<link rel="stylesheet" href="../../../mwiki/index31a6.css" />
+<link rel="stylesheet" href="../../../mwiki/index663f.css" media="print" />
+<link rel="stylesheet" href="../../../mwiki/index0cd5.css" />
+<link rel="stylesheet" href="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;gen=css" />
+<script>
+var skin="vector",
+stylepath="/mwiki/skins",
+wgUrlProtocols="http.html\\:\\/\\/|https\\:\\/\\/|ftp\\:\\/\\/|irc\\:\\/\\/|gopher\\:\\/\\/|telnet\\:\\/\\/|nntp\\:\\/\\/|worldwind\\:\\/\\/|mailto\\:|news\\:|svn\\:\\/\\/",
+wgArticlePath="/w/$1",
+wgScriptPath="/mwiki",
+wgScriptExtension=".php",
+wgScript="../../cpp.html",
+wgVariantArticlePath=false,
+wgActionPaths={},
+wgServer="../../../index.html",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="cpp/string/narrow",
+wgTitle="cpp/string/narrow",
+wgAction="view",
+wgArticleId=1430,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="en",
+wgContentLanguage="en",
+wgBreakFrames=false,
+wgCurRevisionId=10263,
+wgVersion="1.16.2",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=["", ""],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Main Page",
+wgFormattedNamespaces={"-2": "Media", "-1": "Special", "0": "", "1": "Talk", "2": "User", "3": "User talk", "4": "Cppreference", "5": "Cppreference talk", "6": "File", "7": "File talk", "8": "MediaWiki", "9": "MediaWiki talk", "10": "Template", "11": "Template talk", "12": "Help", "13": "Help talk", "14": "Category", "15": "Category talk"},
+wgNamespaceIds={"media": -2, "special": -1, "": 0, "talk": 1, "user": 2, "user_talk": 3, "cppreference": 4, "cppreference_talk": 5, "file": 6, "file_talk": 7, "mediawiki": 8, "mediawiki_talk": 9, "template": 10, "template_talk": 11, "help": 12, "help_talk": 13, "category": 14, "category_talk": 15, "image": 6, "image_talk": 7},
+wgSiteName="Cppreference",
+wgCategories=[],
+wgRestrictionEdit=[],
+wgRestrictionMove=[];
+</script><script src="../../../mwiki/skins/common/wikibits3905.js"></script>
+<script src="../../../mwiki/skins/common/ajax3905.js"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/vector/csshover.htc")}</style><![endif]-->
+<script src="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=vector&amp;270"></script>
+
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-cpp_string_narrow skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" >
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Narrow null-terminated strings</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<h3 id="siteSub">From Cppreference</h3>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a> | <a href="../string.html" title="cpp/string">string</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<table class="vertical-navbox nowraplinks sidebar-body" cellspacing="5" style="" cellpadding="0"><tr><th class="sidebar-title" style=""><a href="../../cpp.html" title="cpp"> C++ Standard Library</a></th></tr><tr><td class="sidebar-content" style="padding-top:0.2em; text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent; line-height:1.1em;">
+
+<tr>
+<td>  <a href="../language.html" title="cpp/language"> Language</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../utility.html" title="cpp/utility"> Utilities library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../string.html" title="cpp/string"> Strings library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../containerhtml.html" title="cpp/container"> Containers library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../iterator.html" title="cpp/iterator"> Iterators library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../numeric.html" title="cpp/numeric"> Numerics library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../io.html" title="cpp/io"> Input/output library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../locale.html" title="cpp/locale"> Localizations library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="../atomic.html" title="cpp/atomic"> Atomic operations library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="../thread.html" title="cpp/thread"> Thread support library</a> <span class="mark">(C++11)</span>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><a href="../string.html" title="cpp/string"> Strings library</a></td></tr><tr><td class="sidebar-content" style="text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td>  <strong class="selflink"> Narrow character strings</strong>
+</td></tr>
+
+<tr>
+<td>  <a href="wide.html" title="cpp/string/wide"> Wide character strings</a>
+</td></tr>
+
+<tr>
+<td colspan="5" class="sb-list-h1">  Classes
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_string.html" title="cpp/string/basic string">basic_string</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="char_traits.html" title="cpp/string/char traits">char_traits</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><strong class="selflink"> Narrow null-terminated strings</strong></td></tr><tr><td class="sidebar-content" style="text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td colspan="5" class="sb-list-h1">  Functions
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Character manipulation
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isalnum.html" title="cpp/string/narrow/isalnum">isalnum</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isalpha.html" title="cpp/string/narrow/isalpha">isalpha</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/islower.html" title="cpp/string/narrow/islower">islower</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isupper.html" title="cpp/string/narrow/isupper">isupper</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isdigit.html" title="cpp/string/narrow/isdigit">isdigit</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isxdigit.html" title="cpp/string/narrow/isxdigit">isxdigit</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div>
+</td><td>
+<div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/iscntrl.html" title="cpp/string/narrow/iscntrl">iscntrl</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isgraph.html" title="cpp/string/narrow/isgraph">isgraph</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isspace.html" title="cpp/string/narrow/isspace">isspace</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/isprint.html" title="cpp/string/narrow/isprint">isprint</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/ispunct.html" title="cpp/string/narrow/ispunct">ispunct</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/tolower.html" title="cpp/string/narrow/tolower">tolower</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/toupper.html" title="cpp/string/narrow/toupper">toupper</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Conversions to numeric formats
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/atof.html" title="cpp/string/narrow/atof">atof</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/atoi.html" title="cpp/string/narrow/atoi">atoi</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strtol.html" title="cpp/string/narrow/strtol">strtol</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strtoul.html" title="cpp/string/narrow/strtoul">strtoul</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strtof.html" title="cpp/string/narrow/strtof">strtof</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  String manipulation
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strcpy.html" title="cpp/string/narrow/strcpy">strcpy</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strncpy.html" title="cpp/string/narrow/strncpy">strncpy</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strcat.html" title="cpp/string/narrow/strcat">strcat</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strncat.html" title="cpp/string/narrow/strncat">strncat</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strxfrm.html" title="cpp/string/narrow/strxfrm">strxfrm</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  String examination
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+<div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strlenhtml.html" title="cpp/string/narrow/strlen">strlen</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strcmp.html" title="cpp/string/narrow/strcmp">strcmp</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strncmp.html" title="cpp/string/narrow/strncmp">strncmp</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow/strcoll&amp;action=edit&amp;redlink=1" class="new" title="cpp/string/narrow/strcoll (page does not exist)">strcoll</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strchr.html" title="cpp/string/narrow/strchr">strchr</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strrchr.html" title="cpp/string/narrow/strrchr">strrchr</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div>
+</td><td>
+<div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strspn.html" title="cpp/string/narrow/strspn">strspn</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strcspn.html" title="cpp/string/narrow/strcspn">strcspn</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strpbrk.html" title="cpp/string/narrow/strpbrk">strpbrk</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/strstr.html" title="cpp/string/narrow/strstr">strstr</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow/strtok&amp;action=edit&amp;redlink=1" class="new" title="cpp/string/narrow/strtok (page does not exist)">strtok</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Memory manipulation
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/memchr.html" title="cpp/string/narrow/memchr">memchr</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/memcmphtml.html" title="cpp/string/narrow/memcmp">memcmp</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/memset.html" title="cpp/string/narrow/memset">memset</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/memcpy.html" title="cpp/string/narrow/memcpy">memcpy</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="narrow/memmove.html" title="cpp/string/narrow/memmove">memmove</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Miscellaneous
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow/strerror&amp;action=edit&amp;redlink=1" class="new" title="cpp/string/narrow/strerror (page does not exist)">strerror</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div></td></tr><tr><td style="text-align:right;"></td></tr>
+</table>
+<p>A null-terminated character string, or NTBS, is a character sequence, that consists of nonzero elements, except the last element (the terminating null-character), which has the value zero.
+</p><p>A null-terminated multibyte character string, or NTMBS, is a null-terminated character string, that consists of valid multibyte characters. The string must begin and end with the shift state. A multibyte character string is compatible with regular character strings, that is, can be processed using the same facilities, except for the length calculation.
+</p>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete<br />Reason: explain shift state </td></tr></table>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2"> <table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Functions"><span class="tocnumber">1</span> <span class="toctext">Functions</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Character_manipulation"><span class="tocnumber">1.1</span> <span class="toctext">Character manipulation</span></a></li>
+<li class="toclevel-2"><a href="#Conversions_to_numeric_formats"><span class="tocnumber">1.2</span> <span class="toctext">Conversions to numeric formats</span></a></li>
+<li class="toclevel-2"><a href="#String_manipulation"><span class="tocnumber">1.3</span> <span class="toctext">String manipulation</span></a></li>
+<li class="toclevel-2"><a href="#String_examination"><span class="tocnumber">1.4</span> <span class="toctext">String examination</span></a></li>
+<li class="toclevel-2"><a href="#Memory_manipulation"><span class="tocnumber">1.5</span> <span class="toctext">Memory manipulation</span></a></li>
+<li class="toclevel-2"><a href="#Miscellaneous"><span class="tocnumber">1.6</span> <span class="toctext">Miscellaneous</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h3> <span class="mw-headline" id="Functions"> Functions</span></h3>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Character_manipulation">  Character manipulation </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isalnum.html" title="cpp/string/narrow/isalnum"> <tt><b>isalnum</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is alphanumeric <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isalpha.html" title="cpp/string/narrow/isalpha"> <tt><b>isalpha</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is alphabetic <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/islower.html" title="cpp/string/narrow/islower"> <tt><b>islower</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is lowercase <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isupper.html" title="cpp/string/narrow/isupper"> <tt><b>isupper</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is an uppercase character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isdigit.html" title="cpp/string/narrow/isdigit"> <tt><b>isdigit</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a digit <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isxdigit.html" title="cpp/string/narrow/isxdigit"> <tt><b>isxdigit</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a hexadecimal character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/iscntrl.html" title="cpp/string/narrow/iscntrl"> <tt><b>iscntrl</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a control character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isgraph.html" title="cpp/string/narrow/isgraph"> <tt><b>isgraph</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a graphical character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isspace.html" title="cpp/string/narrow/isspace"> <tt><b>isspace</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a space character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/isprint.html" title="cpp/string/narrow/isprint"> <tt><b>isprint</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a printing character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/ispunct.html" title="cpp/string/narrow/ispunct"> <tt><b>ispunct</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is a punctuation character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/tolower.html" title="cpp/string/narrow/tolower"> <tt><b>tolower</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character to lowercase <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/toupper.html" title="cpp/string/narrow/toupper"> <tt><b>toupper</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character to uppercase <br /> <span class="mark">(function)</span>
+</td></tr>
+</table>
+<table class="wikitable" style="font-size:85%; text-align:center;">
+
+<tr>
+<th colspan="2"> ASCII values <br /> (hex)
+</th><th> characters
+</th><th style="font-size:85%;">
+<p><a href="narrow/iscntrl.html" title="cpp/string/narrow/iscntrl"><tt>iscntrl</tt></a> <br />
+<a href="wide/iswcntrl.html" title="cpp/string/wide/iswcntrl"><tt>iswcntrl</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isprint.html" title="cpp/string/narrow/isprint"><tt>isprint</tt></a> <br />
+<a href="wide/iswprint.html" title="cpp/string/wide/iswprint"><tt>iswprint</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isspace.html" title="cpp/string/narrow/isspace"><tt>isspace</tt></a> <br />
+<a href="wide/iswspace.html" title="cpp/string/wide/iswspace"><tt>iswspace</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isgraph.html" title="cpp/string/narrow/isgraph"><tt>isgraph</tt></a> <br />
+<a href="wide/iswgraph.html" title="cpp/string/wide/iswgraph"><tt>iswgraph</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/ispunct.html" title="cpp/string/narrow/ispunct"><tt>ispunct</tt></a> <br />
+<a href="wide/iswpunct.html" title="cpp/string/wide/iswpunct"><tt>iswpunct</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isalnum.html" title="cpp/string/narrow/isalnum"><tt>isalnum</tt></a> <br />
+<a href="wide/iswalnum.html" title="cpp/string/wide/iswalnum"><tt>iswalnum</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isalpha.html" title="cpp/string/narrow/isalpha"><tt>isalpha</tt></a> <br />
+<a href="wide/iswalpha.html" title="cpp/string/wide/iswalpha"><tt>iswalpha</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isupper.html" title="cpp/string/narrow/isupper"><tt>isupper</tt></a> <br />
+<a href="wide/iswupper.html" title="cpp/string/wide/iswupper"><tt>iswupper</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/islower.html" title="cpp/string/narrow/islower"><tt>islower</tt></a> <br />
+<a href="wide/iswlower.html" title="cpp/string/wide/iswlower"><tt>iswlower</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isdigit.html" title="cpp/string/narrow/isdigit"><tt>isdigit</tt></a> <br />
+<a href="wide/iswdigit.html" title="cpp/string/wide/iswdigit"><tt>iswdigit</tt></a>
+</p>
+</th><th style="font-size:85%;">
+<p><a href="narrow/isxdigit.html" title="cpp/string/narrow/isxdigit"><tt>isxdigit</tt></a> <br />
+<a href="wide/iswxdigit.html" title="cpp/string/wide/iswxdigit"><tt>iswxdigit</tt></a>
+</p>
+</th></tr>
+<tr>
+<td> 0  - 8
+</td><td> <tt>0x00-0x08</tt>
+</td><td> control codes (<tt>NUL</tt>, etc.)
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 9  - 13
+</td><td> <tt>0x09-0x0D</tt>
+</td><td> whitespace (<tt>\t</tt>,<tt>\f</tt>,<tt>\v</tt>,<tt>\n</tt>,<tt>\r</tt>)
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 14 - 31
+</td><td> <tt>0x0E-0x1F</tt>
+</td><td> control codes
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 32
+</td><td> <tt>0x20</tt>
+</td><td> space
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 33 - 47
+</td><td> <tt>0x21-0x2F</tt>
+</td><td> <tt>!"#$%&amp;'()*+,-./</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 48 - 57
+</td><td> <tt>0x30-0x39</tt>
+</td><td> <tt>01234567890</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td></tr>
+<tr>
+<td> 58 - 64
+</td><td> <tt>0x3a-0x40</tt>
+</td><td> <tt>:;&lt;=&gt;?@</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 65 - 70
+</td><td> <tt>0x41-0x46</tt>
+</td><td> <tt>ABCDEF</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td></tr>
+<tr>
+<td> 71 - 90
+</td><td> <tt>0x47-0x5A</tt>
+</td><td> <tt>GHIJKLMNOPQRSTUVWXYZ</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 91 - 96
+</td><td> <tt>0x5B-0x60</tt>
+</td><td> <tt>[\]^_`</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 97 -102
+</td><td> <tt>0x61-0x66</tt>
+</td><td> <tt>abcdef</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td></tr>
+<tr>
+<td> 103-122
+</td><td> <tt>0x67-0x7A</tt>
+</td><td> <tt>ghijklmnopqrstuvwxyz</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 123-126
+</td><td> <tt>0x7B-0x7E</tt>
+</td><td> <tt>{|}~</tt>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr>
+<tr>
+<td> 127
+</td><td> <tt>0x7F</tt>
+</td><td> backspace character (<tt>DEL</tt>)
+</td><td style="background: #90ff90; color: black; vertical-align: middle; text-align: center;" class="table-yes"><b><tt>≠0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td><td style="background:#ff9090; color:black; vertical-align: middle; text-align: center;" class="table-no"> <b><tt>0</tt></b>
+</td></tr></table>
+<table class="dcl-list-begin">
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Conversions_to_numeric_formats">  Conversions to numeric formats </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/atof.html" title="cpp/string/narrow/atof"> <tt><b>atof</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character string to a floating point value  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/atoi.html" title="cpp/string/narrow/atoi"> <tt><b>atoi<br />atol<br />atoll</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character string to an integer value  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strtol.html" title="cpp/string/narrow/strtol"> <tt><b>strtol<br />strtoll</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character string to an integer value  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strtoul.html" title="cpp/string/narrow/strtoul"> <tt><b>strtoul<br /> strtoull</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character string to an unsigned integer value  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strtof.html" title="cpp/string/narrow/strtof"> <tt><b>strtof<br />strtod<br />strtold</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character string to a floating point value  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="String_manipulation">  String manipulation </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strcpy.html" title="cpp/string/narrow/strcpy"> <tt><b>strcpy</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   copies one string to another <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strncpy.html" title="cpp/string/narrow/strncpy"> <tt><b>strncpy</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   copies a certain amount of characters from one string to another <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strcat.html" title="cpp/string/narrow/strcat"> <tt><b>strcat</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   concatenates two strings <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strncat.html" title="cpp/string/narrow/strncat"> <tt><b>strncat</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   concatenates a certain amount of characters of two strings <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strxfrm.html" title="cpp/string/narrow/strxfrm"> <tt><b>strxfrm</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a substring so that it can be used by string comparison functions <br /> <span class="mark">(function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="String_examination">  String examination </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strlenhtml.html" title="cpp/string/narrow/strlen"> <tt><b>strlen</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the length of a given string <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strcmp.html" title="cpp/string/narrow/strcmp"> <tt><b>strcmp</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   compares two strings <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strncmp.html" title="cpp/string/narrow/strncmp"> <tt><b>strncmp</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   compares a certain amount of characters of two strings <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow/strcoll&amp;action=edit&amp;redlink=1" class="new" title="cpp/string/narrow/strcoll (page does not exist)"> <tt><b>strcoll</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   compares two strings in accordance to the current locale <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strchr.html" title="cpp/string/narrow/strchr"> <tt><b>strchr</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   finds the first occurrence of a character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strrchr.html" title="cpp/string/narrow/strrchr"> <tt><b>strrchr</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   finds the last occurrence of a character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strspn.html" title="cpp/string/narrow/strspn"> <tt><b>strspn</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the length of the maximum initial segment that consists <br /> of only the characters found in another character string  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strcspn.html" title="cpp/string/narrow/strcspn"> <tt><b>strcspn</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the length of the maximum initial segment that consists <br /> of only the characters not found in another character string  <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strpbrk.html" title="cpp/string/narrow/strpbrk"> <tt><b>strpbrk</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   finds the first location of any character in one string, in another string <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/strstr.html" title="cpp/string/narrow/strstr"> <tt><b>strstr</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   finds the first occurrence of a substring of characters <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow/strtok&amp;action=edit&amp;redlink=1" class="new" title="cpp/string/narrow/strtok (page does not exist)"> <tt><b>strtok</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   finds the next token in a character string <br /> <span class="mark">(function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Memory_manipulation">  Memory manipulation </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/memchr.html" title="cpp/string/narrow/memchr"> <tt><b>memchr</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   searches an array for the first occurrence of a character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/memcmphtml.html" title="cpp/string/narrow/memcmp"> <tt><b>memcmp</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   compares two buffers <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/memset.html" title="cpp/string/narrow/memset"> <tt><b>memset</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   fills a buffer with a character <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/memcpy.html" title="cpp/string/narrow/memcpy"> <tt><b>memcpy</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   copies one buffer to another <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="narrow/memmove.html" title="cpp/string/narrow/memmove"> <tt><b>memmove</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   moves one buffer to another <br /> <span class="mark">(function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Miscellaneous">  Miscellaneous </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow/strerror&amp;action=edit&amp;redlink=1" class="new" title="cpp/string/narrow/strerror (page does not exist)"> <tt><b>strerror</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns a text version of a given error code <br /> <span class="mark">(function)</span>
+</td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 8505/1000000
+Post-expand include size: 311697/2097152 bytes
+Template argument size: 88729/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:1430-0!1!0!!en!2 and timestamp 20110915144039 -->
+<div class="printfooter">
+Retrieved from "<a href="narrow.html">http://en.cppreference.com/w/cpp/string/narrow</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+					<li  id="pt-login"><a href="http://en.cppreference.com/mwiki/index.php?title=Special:UserLogin&amp;returnto=cpp/string/narrow" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><a href="narrow.html"  title="View the content page [c]" accesskey="c"><span>Page</span></a></li>
+					<li  id="ca-talk" class="new"><a href="http://en.cppreference.com/mwiki/index.php?title=Talk:cpp/string/narrow&amp;action=edit&amp;redlink=1"  title="Discussion about the content page [t]" accesskey="t"><span>Discussion</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><a href="narrow.html" ><span>Read</span></a></li>
+					<li id="ca-edit"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow&amp;action=edit"  title="You can edit this page. Please use the preview button before saving [e]" accesskey="e"><span>Edit</span></a></li>
+					<li id="ca-history" class="collapsible "><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow&amp;action=history"  title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://en.cppreference.com/mwiki/index.php" id="searchform">
+		<input type='hidden' name="title" value="Special:Search"/>
+				<input id="searchInput" name="search" type="text"  title="Search Cppreference [f]" accesskey="f"  value="" />
+		<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />
+		<input type="submit" name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../mwiki/skins/common/images/wiki.png);" href="../../cpp.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="../../cpp.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+					<li id="n-recentchanges"><a href="http://en.cppreference.com/w/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+					<li id="n-help"><a href="http://en.cppreference.com/w/Help:Contents" title="The place to find out">Help</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="http://en.cppreference.com/w/Special:WhatLinksHere/cpp/string/narrow" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="http://en.cppreference.com/w/Special:RecentChangesLinked/cpp/string/narrow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+																																					<li id="t-upload"><a href="http://upload.cppreference.com/w/Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+											<li id="t-specialpages"><a href="http://en.cppreference.com/w/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+									<li id="t-print"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+						<li id="t-permalink"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/string/narrow&amp;oldid=10263" title="Permanent link to this revision of the page">Permanent link</a></li>
+						</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>In other languages</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-ar"><a href="http://ar.cppreference.com/w/cpp/string/narrow">العربية</a></li>
+					<li class="interwiki-pt-br"><a href="http://pt-br.cppreference.com/w/cpp/string/narrow">Português do Brasil</a></li>
+					<li class="interwiki-zh"><a href="http://zh.cppreference.com/w/cpp/string/narrow">中文</a></li>
+					<li class="interwiki-cs"><a href="http://cs.cppreference.com/w/cpp/string/narrow">Česky</a></li>
+					<li class="interwiki-de"><a href="http://de.cppreference.com/w/cpp/string/narrow">Deutsch</a></li>
+					<li class="interwiki-es"><a href="http://es.cppreference.com/w/cpp/string/narrow">Español</a></li>
+					<li class="interwiki-fr"><a href="http://fr.cppreference.com/w/cpp/string/narrow">Français</a></li>
+					<li class="interwiki-it"><a href="http://it.cppreference.com/w/cpp/string/narrow">Italiano</a></li>
+					<li class="interwiki-ja"><a href="http://ja.cppreference.com/w/cpp/string/narrow">日本語</a></li>
+					<li class="interwiki-lv"><a href="http://lv.cppreference.com/w/cpp/string/narrow">Latviešu</a></li>
+					<li class="interwiki-nl"><a href="http://nl.cppreference.com/w/cpp/string/narrow">Nederlands</a></li>
+					<li class="interwiki-pl"><a href="http://pl.cppreference.com/w/cpp/string/narrow">Polski</a></li>
+					<li class="interwiki-ro"><a href="http://ro.cppreference.com/w/cpp/string/narrow">Română</a></li>
+					<li class="interwiki-ru"><a href="http://ru.cppreference.com/w/cpp/string/narrow">Русский</a></li>
+					<li class="interwiki-tr"><a href="http://tr.cppreference.com/w/cpp/string/narrow">Türkçe</a></li>
+					<li class="interwiki-tw"><a href="http://tw.cppreference.com/w/cpp/string/narrow">Twi</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> This page was last modified on 2 September 2011, at 22:59.</li>
+																							<li id="footer-info-viewcount">This page has been accessed 6,527 times.</li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://en.cppreference.com/w/Cppreference:Privacy_policy" title="Cppreference:Privacy policy">Privacy policy</a></li>
+																							<li id="footer-places-about"><a href="http://en.cppreference.com/w/Cppreference:About" title="Cppreference:About">About Cppreference</a></li>
+																							<li id="footer-places-disclaimer"><a href="http://en.cppreference.com/w/Cppreference:General_disclaimer" title="Cppreference:General disclaimer">Disclaimers</a></li>
+															</ul>
+										<ul id="footer-icons" class="noprint">
+								<li id="footer-icon-poweredby"><a href="http://www.mediawiki.org/"><img src="../../../mwiki/skins/common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></li>
+											</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		
+<script>if (window.runOnloadHook) runOnloadHook();</script>
+		<!-- Served in 3.551 secs. -->			</body>
+<!-- Cached 20110915144039 -->
+
+<!-- Mirrored from en.cppreference.com/w/cpp/string/narrow by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 15:31:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+</html>

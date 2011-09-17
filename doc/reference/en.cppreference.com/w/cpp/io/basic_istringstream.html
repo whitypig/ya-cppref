@@ -1,0 +1,1570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from en.cppreference.com/w/cpp/io/basic_istringstream by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 15:57:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+<head>
+<title>std::basic_istringstream - Cppreference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="MediaWiki 1.16.2" />
+<link rel="alternate" type="application/x-wiki" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;action=edit" />
+<link rel="edit" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;action=edit" />
+<link rel="shortcut icon" href="../../../favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="../../../mwiki/opensearch_desc.php" title="Cppreference (en)" />
+<link rel="alternate" type="application/atom+xml" title="Cppreference Atom feed" href="http://en.cppreference.com/mwiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../mwiki/skins/vector/main-ltr3905.css" media="screen" />
+<link rel="stylesheet" href="../../../mwiki/skins/common/shared3905.css" media="screen" />
+<link rel="stylesheet" href="../../../mwiki/skins/common/commonPrint3905.css" media="print" />
+<link rel="stylesheet" href="../../../mwiki/index31a6.css" />
+<link rel="stylesheet" href="../../../mwiki/index663f.css" media="print" />
+<link rel="stylesheet" href="../../../mwiki/index0cd5.css" />
+<link rel="stylesheet" href="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;gen=css" />
+<script>
+var skin="vector",
+stylepath="/mwiki/skins",
+wgUrlProtocols="http.html\\:\\/\\/|https\\:\\/\\/|ftp\\:\\/\\/|irc\\:\\/\\/|gopher\\:\\/\\/|telnet\\:\\/\\/|nntp\\:\\/\\/|worldwind\\:\\/\\/|mailto\\:|news\\:|svn\\:\\/\\/",
+wgArticlePath="/w/$1",
+wgScriptPath="/mwiki",
+wgScriptExtension=".php",
+wgScript="../../cpp.html",
+wgVariantArticlePath=false,
+wgActionPaths={},
+wgServer="../../../index.html",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="cpp/io/basic_istringstream",
+wgTitle="cpp/io/basic istringstream",
+wgAction="view",
+wgArticleId=533,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="en",
+wgContentLanguage="en",
+wgBreakFrames=false,
+wgCurRevisionId=9226,
+wgVersion="1.16.2",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=["", ""],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Main Page",
+wgFormattedNamespaces={"-2": "Media", "-1": "Special", "0": "", "1": "Talk", "2": "User", "3": "User talk", "4": "Cppreference", "5": "Cppreference talk", "6": "File", "7": "File talk", "8": "MediaWiki", "9": "MediaWiki talk", "10": "Template", "11": "Template talk", "12": "Help", "13": "Help talk", "14": "Category", "15": "Category talk"},
+wgNamespaceIds={"media": -2, "special": -1, "": 0, "talk": 1, "user": 2, "user_talk": 3, "cppreference": 4, "cppreference_talk": 5, "file": 6, "file_talk": 7, "mediawiki": 8, "mediawiki_talk": 9, "template": 10, "template_talk": 11, "help": 12, "help_talk": 13, "category": 14, "category_talk": 15, "image": 6, "image_talk": 7},
+wgSiteName="Cppreference",
+wgCategories=[],
+wgRestrictionEdit=[],
+wgRestrictionMove=[];
+</script><script src="../../../mwiki/skins/common/wikibits3905.js"></script>
+<script src="../../../mwiki/skins/common/ajax3905.js"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/vector/csshover.htc")}</style><![endif]-->
+<script src="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=vector&amp;270"></script>
+
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "http://en.cppreference.com/mwiki/index.php?title=MediaWiki:Geshi.css&amp;usemsgcache=yes&amp;action=raw&amp;ctype=text/css&amp;smaxage=18000";
+/*]]>*/
+</style></head>
+<body class="mediawiki ltr ns-0 ns-subject page-cpp_io_basic_istringstream skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" >
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">std::</span>basic_istringstream</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<h3 id="siteSub">From Cppreference</h3>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../cpp.html" title="cpp">cpp</a> | <a href="../io.html" title="cpp/io">io</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<table class="vertical-navbox nowraplinks sidebar-body" cellspacing="5" style="" cellpadding="0"><tr><th class="sidebar-title" style=""><a href="../../cpp.html" title="cpp"> C++ Standard Library</a></th></tr><tr><td class="sidebar-content" style="padding-top:0.2em; text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent; line-height:1.1em;">
+
+<tr>
+<td>  <a href="../language.html" title="cpp/language"> Language</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../utility.html" title="cpp/utility"> Utilities library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../string.html" title="cpp/string"> Strings library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../containerhtml.html" title="cpp/container"> Containers library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../algorithm.html" title="cpp/algorithm"> Algorithms library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../iterator.html" title="cpp/iterator"> Iterators library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../numeric.html" title="cpp/numeric"> Numerics library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../io.html" title="cpp/io"> Input/output library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../locale.html" title="cpp/locale"> Localizations library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="../atomic.html" title="cpp/atomic"> Atomic operations library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="../thread.html" title="cpp/thread"> Thread support library</a> <span class="mark">(C++11)</span>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><a href="../io.html" title="cpp/io"> Input/output library</a></td></tr><tr><td class="sidebar-content" style="text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_streambuf.html" title="cpp/io/basic streambuf">basic_streambuf</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_filebufhtml.html" title="cpp/io/basic filebuf">basic_filebuf</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_stringbuf.html" title="cpp/io/basic stringbuf">basic_stringbuf</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="ios_basehtml.html" title="cpp/io/ios base">ios_base</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_ios.html" title="cpp/io/basic ios">basic_ios</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_istream.html" title="cpp/io/basic istream">basic_istream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_ostream.html" title="cpp/io/basic ostream">basic_ostream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_iostream.html" title="cpp/io/basic iostream">basic_iostream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_ifstream.html" title="cpp/io/basic ifstream">basic_ifstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_ofstream.html" title="cpp/io/basic ofstream">basic_ofstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_fstream.html" title="cpp/io/basic fstream">basic_fstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><strong class="selflink">basic_istringstream</strong></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_ostringstreamhtml.html" title="cpp/io/basic ostringstream">basic_ostringstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_stringstreamhtml.html" title="cpp/io/basic stringstream">basic_stringstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="c.html" title="cpp/io/c">C-style I/O</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><strong class="selflink"><tt>std::basic_istringstream</tt></strong></td></tr><tr><td class="sidebar-content" style="text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td colspan="5" class="sb-list-h1">  Member functions
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_istringstream/basic_istringstreamhtml.html" title="cpp/io/basic istringstream/basic istringstream">basic_istringstream::basic_istringstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_istringstream/operator%3d.html" title="cpp/io/basic istringstream/operator=">basic_istringstream::operator=</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_istringstream/swap.html" title="cpp/io/basic istringstream/swap">basic_istringstream::swap</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_istringstream/rdbuf.html" title="cpp/io/basic istringstream/rdbuf">basic_istringstream::rdbuf</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  String operations
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="basic_istringstream/str.html" title="cpp/io/basic istringstream/str">basic_istringstream::str</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div></td></tr><tr><td style="text-align:right;"></td></tr>
+</table>
+<table class="ddcl-list-begin">
+
+<tr>
+<td> <div class="ddcl-list-header-col1"> Defined in header <tt>&lt;sstream&gt;</tt>
+ </div>
+</td><td>
+</td><td>
+</td><td style="display:none"> <br />
+</td></tr>
+<tr>
+<td colspan="3" class="ddcl-list-sep">
+</td></tr>
+<tr>
+<td class="ddcl-list-item-col1pad"> <div class="ddcl-list-item-content"><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <br />
+<p>&nbsp; &nbsp; <span class="kw1">class</span> CharT, <br />
+&nbsp; &nbsp; <span class="kw1">class</span> Traits <span class="sy1">=</span> <a href="../string/char_traits.html"><span class="kw220">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span><br />
+</p>
+<span class="sy1">&gt;</span> <span class="kw1">class</span> basic_istringstream<span class="sy4">;</span></span></div>
+</td><td class="ddcl-list-item-col2">
+</td><td class="ddcl-list-item-col3pad"> <span class="mark">(pre-C++11 version)</span>
+</td><td style="display:none"> <br />
+</td></tr>
+<tr>
+<td colspan="3" class="ddcl-list-sep">
+</td></tr>
+<tr>
+<td class="ddcl-list-item-col1pad"> <div class="ddcl-list-item-content"><span class="mw-geshi cpp source-cpp"><span class="kw1">template</span><span class="sy1">&lt;</span> <br />
+<p>&nbsp; &nbsp; <span class="kw1">class</span> CharT, <br />
+&nbsp; &nbsp; <span class="kw1">class</span> Traits <span class="sy1">=</span> <a href="../string/char_traits.html"><span class="kw220">std::<span class="me2">char_traits</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span>,<br />
+&nbsp; &nbsp; <span class="kw1">class</span> Allocator <span class="sy1">=</span> <a href="../memory/allocatorhtml.html"><span class="kw107">std::<span class="me2">allocator</span></span></a><span class="sy1">&lt;</span>CharT<span class="sy1">&gt;</span><br />
+</p>
+<span class="sy1">&gt;</span> <span class="kw1">class</span> basic_istringstream<span class="sy4">;</span></span></div>
+</td><td class="ddcl-list-item-col2">
+</td><td class="ddcl-list-item-col3pad"> <span class="mark">(C++11 version)</span>
+</td><td style="display:none"> <br />
+</td></tr>
+<tr>
+<td colspan="3" class="ddcl-list-sep">
+</td></tr></table>
+<p>The class template <tt>basic_istringstream</tt> implements input operations on memory (<span class="mw-geshi cpp source-cpp"><a href="../string/basic_string.html"><span class="kw204">std::<span class="me2">basic_string</span></span></a></span>) based streams. It essentially wraps a raw string device implementation (<a href="basic_stringbuf.html" title="cpp/io/basic stringbuf"><tt>basic_stringbuf</tt></a>) into a higher-level interface (<a href="basic_istream.html" title="cpp/io/basic istream"><tt>basic_istream</tt></a>). The complete interface to unique <tt>basic_stringbuf</tt> members is provided.
+</p>
+<div class="inheritance-diagram">
+<div class="center"><div class="floatnone"><div style="height: 45px; width: 599px; "><map name="ImageMap_1_779617911"><area href="ios_basehtml.html" shape="rect" coords="5,6,107,39" alt="cpp/io/ios base" title="cpp/io/ios base"/><area href="basic_ios.html" shape="rect" coords="142,4,263,42" alt="cpp/io/basic ios" title="cpp/io/basic ios"/><area href="basic_istream.html" shape="rect" coords="297,4,418,42" alt="cpp/io/basic istream" title="cpp/io/basic istream"/></map><img alt="std-basic istringstream-inheritance.png" src="../../../../upload.cppreference.com/mwiki/images/d/d8/std-basic_istringstream-inheritance.png" width="599" height="45" usemap="#ImageMap_1_779617911"/><div style="margin-left: 579px; margin-top: -20px; text-align: left;"><a href="http://en.cppreference.com/w/File:std-basic_istringstream-inheritance.png" title="About this image"><img alt="About this image" src="../../../mwiki/extensions/ImageMap/desc-20.png" style="border: none;"/></a></div></div></div></div>
+<div style="text-align:center;">
+<p><span style="font-size:0.7em; line-height:130%">Inheritance diagram</span>
+</p>
+</div>
+</div>
+<p>Two specializations for common character types are also defined:
+</p>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2"> <div style="margin-left: 3em; font-size: 0.8em"> Defined in header <code>&lt;sstream&gt;</code> </div>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Type
+</td><td class="tdcl-list-hitem-col2">  Definition
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>istringstream</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">basic_istringstream<span class="sy1">&lt;</span><span class="kw4">char</span><span class="sy1">&gt;</span></span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>wistringstream</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">basic_istringstream<span class="sy1">&lt;</span><span class="kw2">wchar_t</span><span class="sy1">&gt;</span></span>
+</td></tr>
+</table>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Member_types"><span class="tocnumber">1</span> <span class="toctext">Member types</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Member_functions"><span class="tocnumber">2</span> <span class="toctext">Member functions</span></a>
+<ul>
+<li class="toclevel-2"><a href="#String_operations"><span class="tocnumber">2.1</span> <span class="toctext">String operations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Inherited_from_std::basic_istream"><span class="tocnumber">3</span> <span class="toctext">Inherited from   std::basic_istream</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Member_functions_2"><span class="tocnumber">3.1</span> <span class="toctext">Member functions</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Formatted_input"><span class="tocnumber">3.1.1</span> <span class="toctext">Formatted input</span></a></li>
+<li class="toclevel-3"><a href="#Unformatted_input"><span class="tocnumber">3.1.2</span> <span class="toctext">Unformatted input</span></a></li>
+<li class="toclevel-3"><a href="#Positioning"><span class="tocnumber">3.1.3</span> <span class="toctext">Positioning</span></a></li>
+<li class="toclevel-3"><a href="#Miscellaneous"><span class="tocnumber">3.1.4</span> <span class="toctext">Miscellaneous</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Member_classes"><span class="tocnumber">3.2</span> <span class="toctext">Member classes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Inherited_from_std::basic_ios"><span class="tocnumber">4</span> <span class="toctext">Inherited from   std::basic_ios</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Member_types_2"><span class="tocnumber">4.1</span> <span class="toctext">Member types</span></a>
+<ul>
+<li class="toclevel-3"><a href="#State_functions"><span class="tocnumber">4.1.1</span> <span class="toctext">State functions</span></a></li>
+<li class="toclevel-3"><a href="#Formatting"><span class="tocnumber">4.1.2</span> <span class="toctext">Formatting</span></a></li>
+<li class="toclevel-3"><a href="#Miscellaneous_2"><span class="tocnumber">4.1.3</span> <span class="toctext">Miscellaneous</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Inherited_from_std::ios_base"><span class="tocnumber">5</span> <span class="toctext">Inherited from   std::ios_base</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Member_functions_3"><span class="tocnumber">5.1</span> <span class="toctext">Member functions</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Formatting_2"><span class="tocnumber">5.1.1</span> <span class="toctext">Formatting</span></a></li>
+<li class="toclevel-3"><a href="#Locales"><span class="tocnumber">5.1.2</span> <span class="toctext">Locales</span></a></li>
+<li class="toclevel-3"><a href="#Internal_extensible_array"><span class="tocnumber">5.1.3</span> <span class="toctext">Internal extensible array</span></a></li>
+<li class="toclevel-3"><a href="#Miscellaneous_3"><span class="tocnumber">5.1.4</span> <span class="toctext">Miscellaneous</span></a></li>
+<li class="toclevel-3"><a href="#Member_classes_2"><span class="tocnumber">5.1.5</span> <span class="toctext">Member classes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Member_types_and_constants"><span class="tocnumber">5.2</span> <span class="toctext">Member types and constants</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;action=edit&amp;section=1" title="Edit section: Member types">edit</a>]</span> <span class="mw-headline" id="Member_types">Member types</span></h3>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Member type
+</td><td class="tdcl-list-hitem-col2">  Definition
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>char_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">CharT</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>traits_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>int_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits<span class="sy4">::</span><span class="me2">int_type</span></span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>pos_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits<span class="sy4">::</span><span class="me2">pos_type</span></span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>off_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits<span class="sy4">::</span><span class="me2">off_type</span></span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>allocator_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Allocator</span> <span class="mark">(C++11 feature)</span>
+</td></tr>
+</table>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;action=edit&amp;section=2" title="Edit section: Member functions">edit</a>]</span> <span class="mw-headline" id="Member_functions">Member functions</span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istringstream/basic_istringstreamhtml.html" title="cpp/io/basic istringstream/basic istringstream"> (constructor) </a></td></tr></table>
+</td><td class="dcl-list-item-col2">  constructs the string stream <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istringstream/operator%3d.html" title="cpp/io/basic istringstream/operator="> <tt><b>operator=</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   moves the string stream  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istringstream/swap.html" title="cpp/io/basic istringstream/swap"> <tt><b>swap</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   swaps two string streams  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istringstream/rdbuf.html" title="cpp/io/basic istringstream/rdbuf"> <tt><b>rdbuf</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the underlying raw string device object <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="String_operations">  String operations  </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istringstream/str.html" title="cpp/io/basic istringstream/str"> <tt><b>str</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   gets or sets the contents of underlying string device object <br /> <span class="mark">(public member function)</span>
+</td></tr>
+</table>
+<div class="inherited">
+<h2> <span class="mw-headline" id="Inherited_from_std::basic_istream">Inherited from  <a href="basic_istream.html" title="cpp/io/basic istream"> <span style="font-size:0.7em; line-height:130%">std::</span>basic_istream</a> </span></h2>
+<h3> <span class="mw-headline" id="Member_functions_2">Member functions</span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Formatted_input">  Formatted input </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/operator_gtgt.html" title="cpp/io/basic istream/operator gtgt"> <tt><b>operator&gt;&gt;</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   extracts formatted data <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Unformatted_input">  Unformatted input </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/get.html" title="cpp/io/basic istream/get"> <tt><b>get</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   extracts characters <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/peek.html" title="cpp/io/basic istream/peek"> <tt><b>peek</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   reads the next character without extracting it <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/unget.html" title="cpp/io/basic istream/unget"> <tt><b>unget</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   unextracts a character <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/putbackhtml.html" title="cpp/io/basic istream/putback"> <tt><b>putback</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   puts character into input stream <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/getline.html" title="cpp/io/basic istream/getline"> <tt><b>getline</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   extracts characters until the given character is found <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/ignore.html" title="cpp/io/basic istream/ignore"> <tt><b>ignore</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   extracts and discards characters until the given character is found <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/readhtml.html" title="cpp/io/basic istream/read"> <tt><b>read</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   extracts blocks of characters <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/readsome.html" title="cpp/io/basic istream/readsome"> <tt><b>readsome</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   extracts already available blocks of characters <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/gcounthtml.html" title="cpp/io/basic istream/gcount"> <tt><b>gcount</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns number of characters extracted by last unformatted input operation <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Positioning">  Positioning </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/tellg.html" title="cpp/io/basic istream/tellg"> <tt><b>tellg</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the input position indicator <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/seekg.html" title="cpp/io/basic istream/seekg"> <tt><b>seekg</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets the input position indicator <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Miscellaneous">  Miscellaneous </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/synchtml.html" title="cpp/io/basic istream/sync"> <tt><b>sync</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   synchronizes with the underlying storage device <br /> <span class="mark">(public member function)</span>
+</td></tr>
+</table>
+<h3> <span class="mw-headline" id="Member_classes">Member classes</span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_istream/sentry.html" title="cpp/io/basic istream/sentry"> <tt><b>sentry</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   implements basic logic for preparation of the stream for input operations <br /> <span class="mark">(public member class)</span>
+</td></tr>
+</table>
+<p><br />
+</p>
+</div>
+<div class="inherited">
+<h2> <span class="mw-headline" id="Inherited_from_std::basic_ios">Inherited from  <a href="basic_ios.html" title="cpp/io/basic ios"> <span style="font-size:0.7em; line-height:130%">std::</span>basic_ios</a> </span></h2>
+<h3> <span class="mw-headline" id="Member_types_2">Member types</span></h3>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Member type
+</td><td class="tdcl-list-hitem-col2">  Definition
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>char_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">CharT</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>traits_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>int_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits<span class="sy4">::</span><span class="me2">int_type</span></span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>pos_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits<span class="sy4">::</span><span class="me2">pos_type</span></span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <tt>off_type</tt>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">Traits<span class="sy4">::</span><span class="me2">off_type</span></span>
+</td></tr>
+</table>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="State_functions">  State functions </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/good.html" title="cpp/io/basic ios/good"> <tt><b>good</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if no error has occurred i.e. I/O operations are available <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/eofhtml.html" title="cpp/io/basic ios/eof"> <tt><b>eof</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if end-of-file has been reached <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/fail.html" title="cpp/io/basic ios/fail"> <tt><b>fail</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a recoverable error has occurred <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/bad.html" title="cpp/io/basic ios/bad"> <tt><b>bad</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a non-recoverable error has occurred <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/operator%21html.html" title="cpp/io/basic ios/operator!"> <tt><b>operator!</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if an error has occurred (synonym of <a href="basic_ios/fail.html" title="cpp/io/basic ios/fail"><tt>fail()</tt></a>) <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/operator_bool.html" title="cpp/io/basic ios/operator bool"> <tt><b>operator bool</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if no error has occurred (synonym of <a href="basic_ios/good.html" title="cpp/io/basic ios/good"><tt>good()</tt></a>) <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/rdstate.html" title="cpp/io/basic ios/rdstate"> <tt><b>rdstate</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns state flags <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/setstate.html" title="cpp/io/basic ios/setstate"> <tt><b>setstate</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets state flags <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/clear.html" title="cpp/io/basic ios/clear"> <tt><b>clear</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   clears error and eof flags <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Formatting">  Formatting </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/copyfmthtml.html" title="cpp/io/basic ios/copyfmt"> <tt><b>copyfmt</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   copies formatting information <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="basic_ios/fill.html" title="cpp/io/basic ios/fill"> <tt><b>fill</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages the fill character <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Miscellaneous_2">  Miscellaneous </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/exceptions&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ios/exceptions (page does not exist)"> <tt><b>exceptions</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages exception mask <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/imbue&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ios/imbue (page does not exist)"> <tt><b>imbue</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets the locale <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/rdbuf&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ios/rdbuf (page does not exist)"> <tt><b>rdbuf</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages associated stream buffer <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/tie&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ios/tie (page does not exist)"> <tt><b>tie</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages tied stream <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/narrow&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ios/narrow (page does not exist)"> <tt><b>narrow</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   narrows characters <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ios/widen&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ios/widen (page does not exist)"> <tt><b>widen</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   widens characters <br /> <span class="mark">(public member function)</span>
+</td></tr>
+</table>
+</div>
+<div class="inherited">
+<h2> <span class="mw-headline" id="Inherited_from_std::ios_base">Inherited from  <a href="ios_basehtml.html" title="cpp/io/ios base"> <span style="font-size:0.7em; line-height:130%">std::</span>ios_base</a> </span></h2>
+<h3> <span class="mw-headline" id="Member_functions_3">Member functions</span></h3>
+<table class="dcl-list-begin">
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Formatting_2">  Formatting </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/flagshtml.html" title="cpp/io/ios base/flags"> <tt><b>flags</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages format flags  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/setf.html" title="cpp/io/ios base/setf"> <tt><b>setf</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets specific format flag  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/unsetf.html" title="cpp/io/ios base/unsetf"> <tt><b>unsetf</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   clears specific format flag  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/precision.html" title="cpp/io/ios base/precision"> <tt><b>precision</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages decimal precision of floating point operations  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/widthhtml.html" title="cpp/io/ios base/width"> <tt><b>width</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   manages field width  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Locales">  Locales </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/imbue.html" title="cpp/io/ios base/imbue"> <tt><b>imbue</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets locale  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/getlochtml.html" title="cpp/io/ios base/getloc"> <tt><b>getloc</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns current locale  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Internal_extensible_array">  Internal extensible array </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/xalloc.html" title="cpp/io/ios base/xalloc"> <tt><b>xalloc</b></tt> </a></td><td class="member-cell2"><span class="cmark">[static]</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns an unique index to be used to access elements in the internal extensible array  <br /> <span class="mark">(public static member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/iword.html" title="cpp/io/ios base/iword"> <tt><b>iword</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   accesses specified element in the internal extensible array of <span class="mw-geshi cpp source-cpp"><span class="kw4">long</span></span> elements <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/pword.html" title="cpp/io/ios base/pword"> <tt><b>pword</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   accesses specified element in the internal extensible array of <span class="mw-geshi cpp source-cpp"><span class="kw4">void</span><span class="sy2">*</span></span> elements <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Miscellaneous_3">  Miscellaneous </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/register_callbackhtml.html" title="cpp/io/ios base/register callback"> <tt><b>register_callback</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   registers event callback function  <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/sync_with_stdio.html" title="cpp/io/ios base/sync with stdio"> <tt><b>sync_with_stdio</b></tt> </a></td><td class="member-cell2"><span class="cmark">[static]</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets whether C++ and C IO libraries are interoperable  <br /> <span class="mark">(public static member function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Member_classes_2">  Member classes </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/failure.html" title="cpp/io/ios base/failure"> <tt><b>failure</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   stream exception  <br /> <span class="mark">(public member class)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/Inithtml.html" title="cpp/io/ios base/Init"> <tt><b>Init</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   initializes standard stream objects  <br /> <span class="mark">(public member class)</span>
+</td></tr>
+</table>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2"> <h3> <span class="mw-headline" id="Member_types_and_constants"> Member types and constants</span></h3>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Type
+</td><td class="tdcl-list-hitem-col2">  Explanation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"> <tt><b>openmode</b></tt> </a></td></tr></table>
+</td><td class="tdcl-list-item-col2">  stream open mode type
+<p>The following constants are also defined:
+</p>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Constant
+</td><td class="tdcl-list-hitem-col2">  Explanation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"><tt>app</tt></a>
+</td><td class="tdcl-list-item-col2">  seek to the end of stream before each write
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"><tt>binary</tt></a>
+</td><td class="tdcl-list-item-col2">  open in binary mode
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"><tt>in</tt></a>
+</td><td class="tdcl-list-item-col2">  open for reading
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"><tt>out</tt></a>
+</td><td class="tdcl-list-item-col2">  open for writing
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"><tt>trunc</tt></a>
+</td><td class="tdcl-list-item-col2">  discard the contents of the stream when opening
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/openmode.html" title="cpp/io/ios base/openmode"><tt>ate</tt></a>
+</td><td class="tdcl-list-item-col2">  seek to the end of stream immediately after open
+</td></tr>
+</table>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"> <tt><b>fmtflags</b></tt> </a></td></tr></table>
+</td><td class="tdcl-list-item-col2">  formatting flags type
+<p>The following constants are also defined:
+</p>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Constant
+</td><td class="tdcl-list-hitem-col2">  Explanation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>dec</tt></a>
+</td><td class="tdcl-list-item-col2">  uses decimal base for conversions
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>oct</tt></a>
+</td><td class="tdcl-list-item-col2">  use octal base for conversions
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>hex</tt></a>
+</td><td class="tdcl-list-item-col2">  use hexadecimal base for conversions
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>basefield</tt></a>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">dec<span class="sy3">|</span>oct<span class="sy3">|</span>hex</span>. Useful for masking operations
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>left</tt></a>
+</td><td class="tdcl-list-item-col2">   left adjustment (adds fill characters to the right)
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>right</tt></a>
+</td><td class="tdcl-list-item-col2">  right adjustment (adds fill characters to the left)
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>internal</tt></a>
+</td><td class="tdcl-list-item-col2">  internal adjustment (adds fill characters to the internal designated point)
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>adjustfield</tt></a>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">left<span class="sy3">|</span>right<span class="sy3">|</span>internal</span>. Useful for masking operations
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>scientific</tt></a>
+</td><td class="tdcl-list-item-col2">   generate floating point types using scientific notation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>fixed</tt></a>
+</td><td class="tdcl-list-item-col2">  generate floating point types using fixed notation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>floatfield</tt></a>
+</td><td class="tdcl-list-item-col2">  <span class="mw-geshi cpp source-cpp">scientific<span class="sy3">|</span>fixed</span>. Useful for masking operations
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>boolalpha</tt></a>
+</td><td class="tdcl-list-item-col2">   insert and extract <span class="mw-geshi cpp source-cpp"><span class="kw4">bool</span></span> type in alphanumeric format
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>showbase</tt></a>
+</td><td class="tdcl-list-item-col2">  generate a prefix indicating the numeric base for integer number output
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>showpoint</tt></a>
+</td><td class="tdcl-list-item-col2">  generate a decimal-point character unconditionally for floating-point number output
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>showpos</tt></a>
+</td><td class="tdcl-list-item-col2">  generate a <span class="mw-geshi cpp source-cpp"><span class="sy2">+</span></span> character for non-negative numeric output
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>skipws</tt></a>
+</td><td class="tdcl-list-item-col2">  skip leading whitespace before certain input operations
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>unitbuf</tt></a>
+</td><td class="tdcl-list-item-col2">  flush the output after each output operation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/fmtflags.html" title="cpp/io/ios base/fmtflags"><tt>uppercase</tt></a>
+</td><td class="tdcl-list-item-col2">  replace certain lowercase letters with their uppercase<br />equivalents in certain output output operations
+</td></tr>
+</table>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/iostatehtml.html" title="cpp/io/ios base/iostate"> <tt><b>iostate</b></tt> </a></td></tr></table>
+</td><td class="tdcl-list-item-col2">  state of the stream type
+<p>The following constants are also defined:
+</p>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Constant
+</td><td class="tdcl-list-hitem-col2">  Explanation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/iostatehtml.html" title="cpp/io/ios base/iostate"><tt>goodbit</tt></a>
+</td><td class="tdcl-list-item-col2">  no error
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/iostatehtml.html" title="cpp/io/ios base/iostate"><tt>badbit</tt></a>
+</td><td class="tdcl-list-item-col2">  irrecoverable stream error
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/iostatehtml.html" title="cpp/io/ios base/iostate"><tt>failbit</tt></a>
+</td><td class="tdcl-list-item-col2">  input/output operation failed (formatting or extraction error)
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/iostatehtml.html" title="cpp/io/ios base/iostate"><tt>eofbit</tt></a>
+</td><td class="tdcl-list-item-col2">  associated input sequence has reached end-of-file
+</td></tr>
+</table>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="ios_base/seekdir.html" title="cpp/io/ios base/seekdir"> <tt><b>seekdir</b></tt> </a></td></tr></table>
+</td><td class="tdcl-list-item-col2">  seeking direction type
+<p>The following constants are also defined:
+</p>
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Constant
+</td><td class="tdcl-list-hitem-col2">  Explanation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/seekdir.html" title="cpp/io/ios base/seekdir"><tt>beg</tt></a>
+</td><td class="tdcl-list-item-col2">  the beginning of a stream
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/seekdir.html" title="cpp/io/ios base/seekdir"><tt>end</tt></a>
+</td><td class="tdcl-list-item-col2">  the ending of a stream
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="ios_base/seekdir.html" title="cpp/io/ios base/seekdir"><tt>cur</tt></a>
+</td><td class="tdcl-list-item-col2">  the current position of stream position indicator
+</td></tr>
+</table>
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/ios_base/event&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/ios base/event (page does not exist)"> <tt><b>event</b></tt> </a></td></tr></table>
+</td><td class="tdcl-list-item-col2">  specifies event type
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/ios_base/event_callback&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/ios base/event callback (page does not exist)"> <tt><b>event_callback</b></tt> </a></td></tr></table>
+</td><td class="tdcl-list-item-col2">  callback function type
+</td></tr>
+</table>
+</div>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 12555/1000000
+Post-expand include size: 486516/2097152 bytes
+Template argument size: 152788/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:533-0!1!0!!en!2 and timestamp 20110915152626 -->
+<div class="printfooter">
+Retrieved from "<a href="basic_istringstream.html">http://en.cppreference.com/w/cpp/io/basic_istringstream</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+					<li  id="pt-login"><a href="http://en.cppreference.com/mwiki/index.php?title=Special:UserLogin&amp;returnto=cpp/io/basic_istringstream" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><a href="basic_istringstream.html"  title="View the content page [c]" accesskey="c"><span>Page</span></a></li>
+					<li  id="ca-talk" class="new"><a href="http://en.cppreference.com/mwiki/index.php?title=Talk:cpp/io/basic_istringstream&amp;action=edit&amp;redlink=1"  title="Discussion about the content page [t]" accesskey="t"><span>Discussion</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><a href="basic_istringstream.html" ><span>Read</span></a></li>
+					<li id="ca-edit"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;action=edit"  title="You can edit this page. Please use the preview button before saving [e]" accesskey="e"><span>Edit</span></a></li>
+					<li id="ca-history" class="collapsible "><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;action=history"  title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://en.cppreference.com/mwiki/index.php" id="searchform">
+		<input type='hidden' name="title" value="Special:Search"/>
+				<input id="searchInput" name="search" type="text"  title="Search Cppreference [f]" accesskey="f"  value="" />
+		<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />
+		<input type="submit" name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../mwiki/skins/common/images/wiki.png);" href="../../cpp.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="../../cpp.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+					<li id="n-recentchanges"><a href="http://en.cppreference.com/w/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+					<li id="n-help"><a href="http://en.cppreference.com/w/Help:Contents" title="The place to find out">Help</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="http://en.cppreference.com/w/Special:WhatLinksHere/cpp/io/basic_istringstream" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="http://en.cppreference.com/w/Special:RecentChangesLinked/cpp/io/basic_istringstream" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+																																					<li id="t-upload"><a href="http://upload.cppreference.com/w/Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+											<li id="t-specialpages"><a href="http://en.cppreference.com/w/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+									<li id="t-print"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+						<li id="t-permalink"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_istringstream&amp;oldid=9226" title="Permanent link to this revision of the page">Permanent link</a></li>
+						</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>In other languages</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-ar"><a href="http://ar.cppreference.com/w/cpp/io/basic_istringstream">العربية</a></li>
+					<li class="interwiki-pt-br"><a href="http://pt-br.cppreference.com/w/cpp/io/basic_istringstream">Português do Brasil</a></li>
+					<li class="interwiki-zh"><a href="http://zh.cppreference.com/w/cpp/io/basic_istringstream">中文</a></li>
+					<li class="interwiki-cs"><a href="http://cs.cppreference.com/w/cpp/io/basic_istringstream">Česky</a></li>
+					<li class="interwiki-de"><a href="http://de.cppreference.com/w/cpp/io/basic_istringstream">Deutsch</a></li>
+					<li class="interwiki-es"><a href="http://es.cppreference.com/w/cpp/io/basic_istringstream">Español</a></li>
+					<li class="interwiki-fr"><a href="http://fr.cppreference.com/w/cpp/io/basic_istringstream">Français</a></li>
+					<li class="interwiki-it"><a href="http://it.cppreference.com/w/cpp/io/basic_istringstream">Italiano</a></li>
+					<li class="interwiki-ja"><a href="http://ja.cppreference.com/w/cpp/io/basic_istringstream">日本語</a></li>
+					<li class="interwiki-lv"><a href="http://lv.cppreference.com/w/cpp/io/basic_istringstream">Latviešu</a></li>
+					<li class="interwiki-nl"><a href="http://nl.cppreference.com/w/cpp/io/basic_istringstream">Nederlands</a></li>
+					<li class="interwiki-pl"><a href="http://pl.cppreference.com/w/cpp/io/basic_istringstream">Polski</a></li>
+					<li class="interwiki-ro"><a href="http://ro.cppreference.com/w/cpp/io/basic_istringstream">Română</a></li>
+					<li class="interwiki-ru"><a href="http://ru.cppreference.com/w/cpp/io/basic_istringstream">Русский</a></li>
+					<li class="interwiki-tr"><a href="http://tr.cppreference.com/w/cpp/io/basic_istringstream">Türkçe</a></li>
+					<li class="interwiki-tw"><a href="http://tw.cppreference.com/w/cpp/io/basic_istringstream">Twi</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> This page was last modified on 19 August 2011, at 00:18.</li>
+																							<li id="footer-info-viewcount">This page has been accessed 1,083 times.</li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://en.cppreference.com/w/Cppreference:Privacy_policy" title="Cppreference:Privacy policy">Privacy policy</a></li>
+																							<li id="footer-places-about"><a href="http://en.cppreference.com/w/Cppreference:About" title="Cppreference:About">About Cppreference</a></li>
+																							<li id="footer-places-disclaimer"><a href="http://en.cppreference.com/w/Cppreference:General_disclaimer" title="Cppreference:General disclaimer">Disclaimers</a></li>
+															</ul>
+										<ul id="footer-icons" class="noprint">
+								<li id="footer-icon-poweredby"><a href="http://www.mediawiki.org/"><img src="../../../mwiki/skins/common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></li>
+											</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		
+<script>if (window.runOnloadHook) runOnloadHook();</script>
+		<!-- Served in 4.736 secs. -->			</body>
+<!-- Cached 20110915152628 -->
+
+<!-- Mirrored from en.cppreference.com/w/cpp/io/basic_istringstream by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 15:58:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+</html>

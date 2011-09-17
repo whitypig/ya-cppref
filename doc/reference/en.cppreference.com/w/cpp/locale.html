@@ -1,0 +1,840 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from en.cppreference.com/w/cpp/locale by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 16:01:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+<head>
+<title>Localization library - Cppreference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="MediaWiki 1.16.2" />
+<link rel="alternate" type="application/x-wiki" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=edit" />
+<link rel="edit" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=edit" />
+<link rel="shortcut icon" href="../../favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="../../mwiki/opensearch_desc.php" title="Cppreference (en)" />
+<link rel="alternate" type="application/atom+xml" title="Cppreference Atom feed" href="http://en.cppreference.com/mwiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../mwiki/skins/vector/main-ltr3905.css" media="screen" />
+<link rel="stylesheet" href="../../mwiki/skins/common/shared3905.css" media="screen" />
+<link rel="stylesheet" href="../../mwiki/skins/common/commonPrint3905.css" media="print" />
+<link rel="stylesheet" href="../../mwiki/index31a6.css" />
+<link rel="stylesheet" href="../../mwiki/index663f.css" media="print" />
+<link rel="stylesheet" href="../../mwiki/index0cd5.css" />
+<link rel="stylesheet" href="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;gen=css" />
+<script>
+var skin="vector",
+stylepath="/mwiki/skins",
+wgUrlProtocols="http.html\\:\\/\\/|https\\:\\/\\/|ftp\\:\\/\\/|irc\\:\\/\\/|gopher\\:\\/\\/|telnet\\:\\/\\/|nntp\\:\\/\\/|worldwind\\:\\/\\/|mailto\\:|news\\:|svn\\:\\/\\/",
+wgArticlePath="/w/$1",
+wgScriptPath="/mwiki",
+wgScriptExtension=".php",
+wgScript="../cpp.html",
+wgVariantArticlePath=false,
+wgActionPaths={},
+wgServer="../../index.html",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="cpp/locale",
+wgTitle="cpp/locale",
+wgAction="view",
+wgArticleId=718,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="en",
+wgContentLanguage="en",
+wgBreakFrames=false,
+wgCurRevisionId=10485,
+wgVersion="1.16.2",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=["", ""],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Main Page",
+wgFormattedNamespaces={"-2": "Media", "-1": "Special", "0": "", "1": "Talk", "2": "User", "3": "User talk", "4": "Cppreference", "5": "Cppreference talk", "6": "File", "7": "File talk", "8": "MediaWiki", "9": "MediaWiki talk", "10": "Template", "11": "Template talk", "12": "Help", "13": "Help talk", "14": "Category", "15": "Category talk"},
+wgNamespaceIds={"media": -2, "special": -1, "": 0, "talk": 1, "user": 2, "user_talk": 3, "cppreference": 4, "cppreference_talk": 5, "file": 6, "file_talk": 7, "mediawiki": 8, "mediawiki_talk": 9, "template": 10, "template_talk": 11, "help": 12, "help_talk": 13, "category": 14, "category_talk": 15, "image": 6, "image_talk": 7},
+wgSiteName="Cppreference",
+wgCategories=[],
+wgRestrictionEdit=[],
+wgRestrictionMove=[];
+</script><script src="../../mwiki/skins/common/wikibits3905.js"></script>
+<script src="../../mwiki/skins/common/ajax3905.js"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/vector/csshover.htc")}</style><![endif]-->
+<script src="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=vector&amp;270"></script>
+
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "http://en.cppreference.com/mwiki/index.php?title=MediaWiki:Geshi.css&amp;usemsgcache=yes&amp;action=raw&amp;ctype=text/css&amp;smaxage=18000";
+/*]]>*/
+</style></head>
+<body class="mediawiki ltr ns-0 ns-subject page-cpp_locale skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" >
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Localization library</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<h3 id="siteSub">From Cppreference</h3>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../cpp.html" title="cpp">cpp</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<table class="vertical-navbox nowraplinks sidebar-body" cellspacing="5" style="" cellpadding="0"><tr><th class="sidebar-title" style=""><a href="../cpp.html" title="cpp"> C++ Standard Library</a></th></tr><tr><td class="sidebar-content" style="padding-top:0.2em; text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent; line-height:1.1em;">
+
+<tr>
+<td>  <a href="language.html" title="cpp/language"> Language</a>
+</td></tr>
+
+<tr>
+<td>  <a href="utility.html" title="cpp/utility"> Utilities library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="string.html" title="cpp/string"> Strings library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="containerhtml.html" title="cpp/container"> Containers library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="algorithm.html" title="cpp/algorithm"> Algorithms library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="iterator.html" title="cpp/iterator"> Iterators library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="numeric.html" title="cpp/numeric"> Numerics library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="io.html" title="cpp/io"> Input/output library</a>
+</td></tr>
+
+<tr>
+<td>  <strong class="selflink"> Localizations library</strong>
+</td></tr>
+
+<tr>
+<td>  <a href="regex.html" title="cpp/regex"> Regular expressions library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="atomic.html" title="cpp/atomic"> Atomic operations library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="thread.html" title="cpp/thread"> Thread support library</a> <span class="mark">(C++11)</span>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><strong class="selflink"> Localizations library</strong></td></tr><tr><td class="sidebar-content" style="text-align:left"><a href="http://en.cppreference.com/mwiki/index.php?title=Template:cpp/locale/sidebar_content&amp;action=edit&amp;redlink=1" class="new" title="Template:cpp/locale/sidebar content (page does not exist)">Template:cpp/locale/sidebar content</a></td></tr><tr><td style="text-align:right;"></td></tr>
+</table>
+<p>The locale facility includes internationalization support for character classification and string collation, numeric, monetary, and date/time formatting and parsing, and message retrieval. Locale settings control the behavior of stream I/O, regular expression library, and other components of the C++ standard library.
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Locales"><span class="tocnumber">1</span> <span class="toctext">Locales</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Locales_and_facets"><span class="tocnumber">1.1</span> <span class="toctext">Locales and facets</span></a></li>
+<li class="toclevel-2"><a href="#Character_classification"><span class="tocnumber">1.2</span> <span class="toctext">Character classification</span></a></li>
+<li class="toclevel-2"><a href="#Character_conversions"><span class="tocnumber">1.3</span> <span class="toctext">Character conversions</span></a></li>
+<li class="toclevel-2"><a href="#String_and_stream_conversions"><span class="tocnumber">1.4</span> <span class="toctext">String and stream conversions</span></a></li>
+<li class="toclevel-2"><a href="#Facet_categories"><span class="tocnumber">1.5</span> <span class="toctext">Facet categories</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-2"><a href="#Standard_code_conversion_facets"><span class="tocnumber">2</span> <span class="toctext">Standard code conversion facets</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#C_library_locales"><span class="tocnumber">3</span> <span class="toctext">C library locales</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=edit&amp;section=1" title="Edit section: Locales">edit</a>]</span> <span class="mw-headline" id="Locales"> Locales </span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2" class="dcl-list-header"> <div>Defined in header <code>&lt;locale&gt;</code> </div>
+</td></tr>
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Locales_and_facets">  Locales and facets  </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/locale&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/locale (page does not exist)"> <tt><b>locale</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   polymorphic set of facets that comprise a locale  <br /> <span class="mark">(class)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/use_facet&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/use facet (page does not exist)"> <tt><b>use_facet</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   obtains a facet from a locale  <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/has_facet&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/has facet (page does not exist)"> <tt><b>has_facet</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a locale implements a specific facet  <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Character_classification">  Character classification  </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isspace&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isspace (page does not exist)"> <tt><b>isspace</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as whitespace by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/iscntrl&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/iscntrl (page does not exist)"> <tt><b>iscntrl</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as a control character by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isupper&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isupper (page does not exist)"> <tt><b>isupper</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as uppercase by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/islower&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/islower (page does not exist)"> <tt><b>islower</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as lowercase by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isalpha&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isalpha (page does not exist)"> <tt><b>isalpha</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as alphabetic by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isdigit&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isdigit (page does not exist)"> <tt><b>isdigit</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as a digit by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/ispunct&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/ispunct (page does not exist)"> <tt><b>ispunct</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as punctuation by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isxdigit&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isxdigit (page does not exist)"> <tt><b>isxdigit</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as a hexadecimal digit by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isalnum&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isalnum (page does not exist)"> <tt><b>isalnum</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as alphanumeric by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isprint&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isprint (page does not exist)"> <tt><b>isprint</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classified as printable, including space, by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/isgraph&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/isgraph (page does not exist)"> <tt><b>isgraph</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   checks if a character is classfied as printable, excluding space, by a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Character_conversions">  Character conversions  </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/toupper&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/toupper (page does not exist)"> <tt><b>toupper</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character to uppercase using the ctype facet of a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/tolower&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/tolower (page does not exist)"> <tt><b>tolower</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts a character to lowercase using the ctype facet of a locale <br /> <span class="mark">(function template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="String_and_stream_conversions">  String and stream conversions  </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/wstring_convert&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/wstring convert (page does not exist)"> <tt><b>wstring_convert</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   performs conversions between a wide string and a byte string  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/wbuffer_convert&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/wbuffer convert (page does not exist)"> <tt><b>wbuffer_convert</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   performs conversion between a byte stream buffer and a wide stream buffer  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+
+<tr>
+<td colspan="2"> <h5> <span class="mw-headline" id="Facet_categories">  Facet categories  </span></h5>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/ctype&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/ctype (page does not exist)"> <tt><b>ctype_base<br />ctype<br />ctype_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   defines character classification tables <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/codecvt&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/codecvt (page does not exist)"> <tt><b>codecvt_base<br />codecvt<br />codecvt_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts between character encodings, including multibyte and wide <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/num_get&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/num get (page does not exist)"> <tt><b>num_get</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   parses numeric values from an input character sequence <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/num_put&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/num put (page does not exist)"> <tt><b>num_put</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   formats numeric values for output as character sequence <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/numpunct&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/numpunct (page does not exist)"> <tt><b>numpunct<br />numpunct_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   defines numeric punctuation rules <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/collate&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/collate (page does not exist)"> <tt><b>collate<br />collate_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   defines lexicographical comparison and hashing of strings <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/time_get&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/time get (page does not exist)"> <tt><b>time_base<br />time_get<br />time_get_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   parses time/date values from an input character sequence into <span class="mw-geshi cpp source-cpp"><span class="kw4">struct</span> std<span class="sy4">::</span><span class="kw4">tm</span></span> <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/time_put&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/time put (page does not exist)"> <tt><b>time_put<br />time_put_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   formats contents of <span class="mw-geshi cpp source-cpp"><span class="kw4">struct</span> std<span class="sy4">::</span><span class="kw4">tm</span></span> for output as character sequence <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/money_get&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/money get (page does not exist)"> <tt><b>money_get</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   parses and constructs a monetary value from an input character sequence <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/money_put&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/money put (page does not exist)"> <tt><b>money_put</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   formats a monetary value for output as a character sequence  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/moneypunct&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/moneypunct (page does not exist)"> <tt><b>money_base<br />moneypunct<br />moneypunct_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   defines monetary formatting parameters used by <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">money_get</span></span> and <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">money_put</span></span>  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/messages_base&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/messages base (page does not exist)"> <tt><b>messages_base<br />messages<br />messages_byname</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   implements retrieval of strings from message catalogs <br /> <span class="mark">(class)</span>
+</td></tr>
+
+</table>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=edit&amp;section=2" title="Edit section: Standard code conversion facets">edit</a>]</span> <span class="mw-headline" id="Standard_code_conversion_facets"> Standard code conversion facets </span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2" class="dcl-list-header"> <div>Defined in header <code>&lt;codecvt&gt;</code> </div>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/codecvt_utf8&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/codecvt utf8 (page does not exist)"> <tt><b>codecvt_utf8</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts between UTF8 and UCS2/UCS4  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/codecvt_utf16&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/codecvt utf16 (page does not exist)"> <tt><b>codecvt_utf16</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts between UTF16 and UCS2/UCS4  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/codecvt_utf8_utf16&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/codecvt utf8 utf16 (page does not exist)"> <tt><b>codecvt_utf8_utf16</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   converts between UTF8 and UTF16  <br /> <span class="mark">(class template)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/codecvt_mode&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/codecvt mode (page does not exist)"> <tt><b>codecvt_mode</b></tt> </a></td><td class="member-cell2"><span class="mark">(C++11)</span></td></tr></table>
+</td><td class="dcl-list-item-col2">   tags to alter behavior of the standard codecvt facets <br /> <span class="mark">(class)</span>
+</td></tr>
+
+</table>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=edit&amp;section=3" title="Edit section: C library locales">edit</a>]</span> <span class="mw-headline" id="C_library_locales"> C library locales </span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2" class="dcl-list-header"> <div>Defined in header <code>&lt;clocale&gt;</code> </div>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/setlocale&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/setlocale (page does not exist)"> <tt><b>setlocale</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   gets and sets the current locale <br /> <span class="mark">(function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/LC_ALL&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/LC ALL (page does not exist)"> <tt><b>LC_ALL</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   full locale category for <span class="mw-geshi cpp source-cpp"><a href="locale/setlocalehtml.html"><span class="kw558">std::<span class="me2">setlocale</span></span></a></span> <br /> <span class="mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/LC_COLLATE&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/LC COLLATE (page does not exist)"> <tt><b>LC_COLLATE</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   string comparison locale category for <span class="mw-geshi cpp source-cpp"><a href="locale/setlocalehtml.html"><span class="kw558">std::<span class="me2">setlocale</span></span></a></span> <br /> <span class="mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/LC_CTYPE&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/LC CTYPE (page does not exist)"> <tt><b>LC_CTYPE</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   character classification locale category for <span class="mw-geshi cpp source-cpp"><a href="locale/setlocalehtml.html"><span class="kw558">std::<span class="me2">setlocale</span></span></a></span> <br /> <span class="mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/LC_MONETARY&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/LC MONETARY (page does not exist)"> <tt><b>LC_MONETARY</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   monetary formatting locale category for <span class="mw-geshi cpp source-cpp"><a href="locale/setlocalehtml.html"><span class="kw558">std::<span class="me2">setlocale</span></span></a></span> <br /> <span class="mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/LC_NUMERIC&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/LC NUMERIC (page does not exist)"> <tt><b>LC_NUMERIC</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   nonmonetary numeric formatting locale category for <span class="mw-geshi cpp source-cpp"><a href="locale/setlocalehtml.html"><span class="kw558">std::<span class="me2">setlocale</span></span></a></span> <br /> <span class="mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale/LC_TIME&amp;action=edit&amp;redlink=1" class="new" title="cpp/locale/LC TIME (page does not exist)"> <tt><b>LC_TIME</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   time formatting locale category for <span class="mw-geshi cpp source-cpp"><a href="locale/setlocalehtml.html"><span class="kw558">std::<span class="me2">setlocale</span></span></a></span> <br /> <span class="mark">(macro constant)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/types/localeconv&amp;action=edit&amp;redlink=1" class="new" title="cpp/types/localeconv (page does not exist)"> <tt><b>localeconv</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   queries numeric and monetary formatting details of the current locale <br /> <span class="mark">(function)</span>
+</td></tr>
+
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/types/lconv&amp;action=edit&amp;redlink=1" class="new" title="cpp/types/lconv (page does not exist)"> <tt><b>lconv</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   formatting details, returned by <span class="mw-geshi cpp source-cpp">std<span class="sy4">::</span><span class="me2">localeconv</span></span>  <br /> <span class="mark">(class)</span>
+</td></tr>
+
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 3347/1000000
+Post-expand include size: 84768/2097152 bytes
+Template argument size: 30195/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:718-0!1!0!!en!2 and timestamp 20110914110251 -->
+<div class="printfooter">
+Retrieved from "<a href="locale.html">http://en.cppreference.com/w/cpp/locale</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+					<li  id="pt-login"><a href="http://en.cppreference.com/mwiki/index.php?title=Special:UserLogin&amp;returnto=cpp/locale" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><a href="locale.html"  title="View the content page [c]" accesskey="c"><span>Page</span></a></li>
+					<li  id="ca-talk"><a href="http://en.cppreference.com/w/Talk:cpp/locale"  title="Discussion about the content page [t]" accesskey="t"><span>Discussion</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><a href="locale.html" ><span>Read</span></a></li>
+					<li id="ca-edit"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=edit"  title="You can edit this page. Please use the preview button before saving [e]" accesskey="e"><span>Edit</span></a></li>
+					<li id="ca-history" class="collapsible "><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;action=history"  title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://en.cppreference.com/mwiki/index.php" id="searchform">
+		<input type='hidden' name="title" value="Special:Search"/>
+				<input id="searchInput" name="search" type="text"  title="Search Cppreference [f]" accesskey="f"  value="" />
+		<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />
+		<input type="submit" name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../mwiki/skins/common/images/wiki.png);" href="../cpp.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="../cpp.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+					<li id="n-recentchanges"><a href="http://en.cppreference.com/w/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+					<li id="n-help"><a href="http://en.cppreference.com/w/Help:Contents" title="The place to find out">Help</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="http://en.cppreference.com/w/Special:WhatLinksHere/cpp/locale" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="http://en.cppreference.com/w/Special:RecentChangesLinked/cpp/locale" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+																																					<li id="t-upload"><a href="http://upload.cppreference.com/w/Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+											<li id="t-specialpages"><a href="http://en.cppreference.com/w/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+									<li id="t-print"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+						<li id="t-permalink"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/locale&amp;oldid=10485" title="Permanent link to this revision of the page">Permanent link</a></li>
+						</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>In other languages</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-ar"><a href="http://ar.cppreference.com/w/cpp/locale">العربية</a></li>
+					<li class="interwiki-pt-br"><a href="http://pt-br.cppreference.com/w/cpp/locale">Português do Brasil</a></li>
+					<li class="interwiki-zh"><a href="http://zh.cppreference.com/w/cpp/locale">中文</a></li>
+					<li class="interwiki-cs"><a href="http://cs.cppreference.com/w/cpp/locale">Česky</a></li>
+					<li class="interwiki-de"><a href="http://de.cppreference.com/w/cpp/locale">Deutsch</a></li>
+					<li class="interwiki-es"><a href="http://es.cppreference.com/w/cpp/locale">Español</a></li>
+					<li class="interwiki-fr"><a href="http://fr.cppreference.com/w/cpp/locale">Français</a></li>
+					<li class="interwiki-it"><a href="http://it.cppreference.com/w/cpp/locale">Italiano</a></li>
+					<li class="interwiki-ja"><a href="http://ja.cppreference.com/w/cpp/locale">日本語</a></li>
+					<li class="interwiki-lv"><a href="http://lv.cppreference.com/w/cpp/locale">Latviešu</a></li>
+					<li class="interwiki-nl"><a href="http://nl.cppreference.com/w/cpp/locale">Nederlands</a></li>
+					<li class="interwiki-pl"><a href="http://pl.cppreference.com/w/cpp/locale">Polski</a></li>
+					<li class="interwiki-ro"><a href="http://ro.cppreference.com/w/cpp/locale">Română</a></li>
+					<li class="interwiki-ru"><a href="http://ru.cppreference.com/w/cpp/locale">Русский</a></li>
+					<li class="interwiki-tr"><a href="http://tr.cppreference.com/w/cpp/locale">Türkçe</a></li>
+					<li class="interwiki-tw"><a href="http://tw.cppreference.com/w/cpp/locale">Twi</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> This page was last modified on 14 September 2011, at 10:10.</li>
+																							<li id="footer-info-viewcount">This page has been accessed 1,893 times.</li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://en.cppreference.com/w/Cppreference:Privacy_policy" title="Cppreference:Privacy policy">Privacy policy</a></li>
+																							<li id="footer-places-about"><a href="http://en.cppreference.com/w/Cppreference:About" title="Cppreference:About">About Cppreference</a></li>
+																							<li id="footer-places-disclaimer"><a href="http://en.cppreference.com/w/Cppreference:General_disclaimer" title="Cppreference:General disclaimer">Disclaimers</a></li>
+															</ul>
+										<ul id="footer-icons" class="noprint">
+								<li id="footer-icon-poweredby"><a href="http://www.mediawiki.org/"><img src="../../mwiki/skins/common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></li>
+											</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		
+<script>if (window.runOnloadHook) runOnloadHook();</script>
+		<!-- Served in 1.809 secs. -->			</body>
+<!-- Cached 20110914110251 -->
+
+<!-- Mirrored from en.cppreference.com/w/cpp/locale by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 16:01:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+</html>

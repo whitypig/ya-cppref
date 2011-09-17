@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from en.cppreference.com/w/cpp/io/basic_ostream/seekp by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 16:11:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+<head>
+<title>std::basic_ostream::seekp - Cppreference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="MediaWiki 1.16.2" />
+<link rel="alternate" type="application/x-wiki" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit" />
+<link rel="edit" title="Edit" href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit" />
+<link rel="shortcut icon" href="../../../../favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="../../../../mwiki/opensearch_desc.php" title="Cppreference (en)" />
+<link rel="alternate" type="application/atom+xml" title="Cppreference Atom feed" href="http://en.cppreference.com/mwiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../../mwiki/skins/vector/main-ltr3905.css" media="screen" />
+<link rel="stylesheet" href="../../../../mwiki/skins/common/shared3905.css" media="screen" />
+<link rel="stylesheet" href="../../../../mwiki/skins/common/commonPrint3905.css" media="print" />
+<link rel="stylesheet" href="../../../../mwiki/index31a6.css" />
+<link rel="stylesheet" href="../../../../mwiki/index663f.css" media="print" />
+<link rel="stylesheet" href="../../../../mwiki/index0cd5.css" />
+<link rel="stylesheet" href="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;gen=css" />
+<script>
+var skin="vector",
+stylepath="/mwiki/skins",
+wgUrlProtocols="http.html\\:\\/\\/|https\\:\\/\\/|ftp\\:\\/\\/|irc\\:\\/\\/|gopher\\:\\/\\/|telnet\\:\\/\\/|nntp\\:\\/\\/|worldwind\\:\\/\\/|mailto\\:|news\\:|svn\\:\\/\\/",
+wgArticlePath="/w/$1",
+wgScriptPath="/mwiki",
+wgScriptExtension=".php",
+wgScript="../../../cpp.html",
+wgVariantArticlePath=false,
+wgActionPaths={},
+wgServer="../../../../index.html",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="cpp/io/basic_ostream/seekp",
+wgTitle="cpp/io/basic ostream/seekp",
+wgAction="view",
+wgArticleId=551,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="en",
+wgContentLanguage="en",
+wgBreakFrames=false,
+wgCurRevisionId=7982,
+wgVersion="1.16.2",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=["", ""],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Main Page",
+wgFormattedNamespaces={"-2": "Media", "-1": "Special", "0": "", "1": "Talk", "2": "User", "3": "User talk", "4": "Cppreference", "5": "Cppreference talk", "6": "File", "7": "File talk", "8": "MediaWiki", "9": "MediaWiki talk", "10": "Template", "11": "Template talk", "12": "Help", "13": "Help talk", "14": "Category", "15": "Category talk"},
+wgNamespaceIds={"media": -2, "special": -1, "": 0, "talk": 1, "user": 2, "user_talk": 3, "cppreference": 4, "cppreference_talk": 5, "file": 6, "file_talk": 7, "mediawiki": 8, "mediawiki_talk": 9, "template": 10, "template_talk": 11, "help": 12, "help_talk": 13, "category": 14, "category_talk": 15, "image": 6, "image_talk": 7},
+wgSiteName="Cppreference",
+wgCategories=[],
+wgRestrictionEdit=[],
+wgRestrictionMove=[];
+</script><script src="../../../../mwiki/skins/common/wikibits3905.js"></script>
+<script src="../../../../mwiki/skins/common/ajax3905.js"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mwiki/skins/vector/csshover.htc")}</style><![endif]-->
+<script src="http://en.cppreference.com/mwiki/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=vector&amp;270"></script>
+
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000dd;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #909090;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #008000; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #008000;}
+.cpp.source-cpp .nu0 {color: #000080;}
+.cpp.source-cpp .nu6 {color: #000080;}
+.cpp.source-cpp .nu8 {color: #000080;}
+.cpp.source-cpp .nu12 {color: #000080;}
+.cpp.source-cpp .nu16 {color:#000080;}
+.cpp.source-cpp .nu17 {color:#000080;}
+.cpp.source-cpp .nu18 {color:#000080;}
+.cpp.source-cpp .nu19 {color:#000080;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "http://en.cppreference.com/mwiki/index.php?title=MediaWiki:Geshi.css&amp;usemsgcache=yes&amp;action=raw&amp;ctype=text/css&amp;smaxage=18000";
+/*]]>*/
+</style></head>
+<body class="mediawiki ltr ns-0 ns-subject page-cpp_io_basic_ostream_seekp skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" >
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span style="font-size:0.7em; line-height:130%">std::basic_ostream::</span>seekp</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<h3 id="siteSub">From Cppreference</h3>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../../cpp.html" title="cpp">cpp</a> | <a href="../../io.html" title="cpp/io">io</a> | <a href="../basic_ostream.html" title="cpp/io/basic ostream">basic ostream</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<table class="vertical-navbox nowraplinks sidebar-body" cellspacing="5" style="" cellpadding="0"><tr><th class="sidebar-title" style=""><a href="../../../cpp.html" title="cpp"> C++ Standard Library</a></th></tr><tr><td class="sidebar-content" style="padding-top:0.2em; text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent; line-height:1.1em;">
+
+<tr>
+<td>  <a href="../../language.html" title="cpp/language"> Language</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../utility.html" title="cpp/utility"> Utilities library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../string.html" title="cpp/string"> Strings library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../containerhtml.html" title="cpp/container"> Containers library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../algorithm.html" title="cpp/algorithm"> Algorithms library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../iterator.html" title="cpp/iterator"> Iterators library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../numeric.html" title="cpp/numeric"> Numerics library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../io.html" title="cpp/io"> Input/output library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../locale.html" title="cpp/locale"> Localizations library</a>
+</td></tr>
+
+<tr>
+<td>  <a href="../../regex.html" title="cpp/regex"> Regular expressions library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="../../atomic.html" title="cpp/atomic"> Atomic operations library</a> <span class="mark">(C++11)</span>
+</td></tr>
+
+<tr>
+<td>  <a href="../../thread.html" title="cpp/thread"> Thread support library</a> <span class="mark">(C++11)</span>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><a href="../../io.html" title="cpp/io"> Input/output library</a></td></tr><tr><td class="sidebar-content" style="text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_streambuf.html" title="cpp/io/basic streambuf">basic_streambuf</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_filebufhtml.html" title="cpp/io/basic filebuf">basic_filebuf</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_stringbuf.html" title="cpp/io/basic stringbuf">basic_stringbuf</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../ios_basehtml.html" title="cpp/io/ios base">ios_base</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_ios.html" title="cpp/io/basic ios">basic_ios</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_istream.html" title="cpp/io/basic istream">basic_istream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_ostream.html" title="cpp/io/basic ostream">basic_ostream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_iostream.html" title="cpp/io/basic iostream">basic_iostream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_ifstream.html" title="cpp/io/basic ifstream">basic_ifstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_ofstream.html" title="cpp/io/basic ofstream">basic_ofstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_fstream.html" title="cpp/io/basic fstream">basic_fstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_istringstream.html" title="cpp/io/basic istringstream">basic_istringstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_ostringstreamhtml.html" title="cpp/io/basic ostringstream">basic_ostringstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../basic_stringstreamhtml.html" title="cpp/io/basic stringstream">basic_stringstream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="../c.html" title="cpp/io/c">C-style I/O</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div></td></tr><tr><td class="sidebar-heading" style=""><a href="../basic_ostream.html" title="cpp/io/basic ostream"><tt>std::basic_ostream</tt></a></td></tr><tr><td class="sidebar-content" style="text-align:left"><div>
+<table cellpadding="0" style="line-height: 1em; width: auto; background-color:transparent;">
+
+<tr>
+<td colspan="5" class="sb-list-h1">  Member functions
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/basic_ostream&amp;action=edit&amp;redlink=1" class="new" title="cpp/io/basic ostream/basic ostream (page does not exist)">basic_ostream::basic_ostream</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="_basic_ostreamhtml.html" title="cpp/io/basic ostream/~basic ostream">basic_ostream::~basic_ostream</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Formatted input
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="operator_ltlt.html" title="cpp/io/basic ostream/operator ltlt">basic_ostream::operator&lt;&lt;</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Unformatted input
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="put.html" title="cpp/io/basic ostream/put">basic_ostream::put</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="write.html" title="cpp/io/basic ostream/write">basic_ostream::write</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Positioning
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="tellphtml.html" title="cpp/io/basic ostream/tellp">basic_ostream::tellp</a></tt></td></tr></table>
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><strong class="selflink">basic_ostream::seekp</strong></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h2">  Miscellaneous
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="flushhtml.html" title="cpp/io/basic ostream/flush">basic_ostream::flush</a></tt></td></tr></table>
+</td></tr>
+
+
+<tr>
+<td colspan="5" class="sb-list-h1">  Member classes
+</td></tr>
+
+<tr>
+<td> <table class="sb-list-ln-table"><tr><td class="sb-list-ln-cell1"><tt><a href="sentry.html" title="cpp/io/basic ostream/sentry">basic_ostream::sentry</a></tt></td></tr></table>
+</td></tr>
+</table>
+</div></td></tr><tr><td style="text-align:right;"></td></tr>
+</table>
+<table class="ddcl-list-begin">
+
+<tr>
+<td colspan="3" class="ddcl-list-sep">
+</td></tr>
+<tr>
+<td class="ddcl-list-item-col1"> <div class="ddcl-list-item-content"><span class="mw-geshi cpp source-cpp">basic_ostream<span class="sy3">&amp;</span> seekp<span class="br0">&#40;</span> pos_type pos <span class="br0">&#41;</span><span class="sy4">;</span></span></div>
+</td><td class="ddcl-list-item-col2">
+</td><td class="ddcl-list-item-col3">
+</td><td style="display:none"> <br />
+</td></tr>
+<tr>
+<td colspan="3" class="ddcl-list-sep">
+</td></tr>
+<tr>
+<td class="ddcl-list-item-col1"> <div class="ddcl-list-item-content"><span class="mw-geshi cpp source-cpp">basic_ostream<span class="sy3">&amp;</span> seekp<span class="br0">&#40;</span> off_type<span class="sy3">&amp;</span> off, std<span class="sy4">::</span><span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">seekdir</span> dir<span class="br0">&#41;</span><span class="sy4">;</span></span></div>
+</td><td class="ddcl-list-item-col2">
+</td><td class="ddcl-list-item-col3">
+</td><td style="display:none"> <br />
+</td></tr>
+<tr>
+<td colspan="3" class="ddcl-list-sep">
+</td></tr></table>
+<p>Sets output position indicator of the current associated <tt>streambuf</tt> object. In case of failure, calls <span class="mw-geshi cpp source-cpp">setstate<span class="br0">&#40;</span>std<span class="sy4">::</span><span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">failbit</span><span class="br0">&#41;</span></span>.
+</p><p>1) sets the output position indicator to absolute (relative to the beginning of the file) value <tt>pos</tt>. Specifically calls <span class="mw-geshi cpp source-cpp">rdbuf<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy2">-</span><span class="sy1">&gt;</span>pubseekpos<span class="br0">&#40;</span>pos, std<span class="sy4">::</span><span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">out</span><span class="br0">&#41;</span></span>.
+</p><p>2) sets the output position indicator to position <tt>off</tt>, relative to position, defined by <tt>dir</tt>. Specifically <span class="mw-geshi cpp source-cpp">rdbuf<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy2">-</span><span class="sy1">&gt;</span>pubseekoff<span class="br0">&#40;</span>off, dir, std<span class="sy4">::</span><span class="me2">ios_base</span><span class="sy4">::</span><span class="me2">out</span><span class="br0">&#41;</span></span>. 
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Parameters"><span class="tocnumber">1</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Return_value"><span class="tocnumber">2</span> <span class="toctext">Return value</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Example"><span class="tocnumber">3</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit&amp;section=1" title="Edit section: Parameters">edit</a>]</span> <span class="mw-headline" id="Parameters">Parameters</span></h3>
+<table>
+
+
+<tr>
+<td valign="top" class="param-list-item-col1"> <tt><b> pos </b></tt>
+</td><td valign="top" class="param-list-item-col2"> -
+</td><td class="param-list-item-col2">  absolute position to set the output position indicator to.
+</td></tr>
+<tr>
+<td valign="top" class="param-list-item-col1"> <tt><b> off </b></tt>
+</td><td valign="top" class="param-list-item-col2"> -
+</td><td class="param-list-item-col2">  relative position to set the output position indicator to.
+</td></tr>
+<tr>
+<td valign="top" class="param-list-item-col1"> <tt><b> dir </b></tt>
+</td><td valign="top" class="param-list-item-col2"> -
+</td><td class="param-list-item-col2">  defines base position to apply the relative offset to. It can be one of the following constants:
+<table class="tdcl-list-begin">
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-hitem-col1">  Constant
+</td><td class="tdcl-list-hitem-col2">  Explanation
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="../ios_base/seekdir.html" title="cpp/io/ios base/seekdir"><tt>beg</tt></a>
+</td><td class="tdcl-list-item-col2">  the beginning of a stream
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="../ios_base/seekdir.html" title="cpp/io/ios base/seekdir"><tt>end</tt></a>
+</td><td class="tdcl-list-item-col2">  the ending of a stream
+</td></tr>
+
+<tr>
+<td colspan="2" class="tdcl-list-sep">
+</td></tr>
+<tr>
+<td class="tdcl-list-item-col1">  <a href="../ios_base/seekdir.html" title="cpp/io/ios base/seekdir"><tt>cur</tt></a>
+</td><td class="tdcl-list-item-col2">  the current position of stream position indicator
+</td></tr>
+</table>
+</td></tr></table>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit&amp;section=2" title="Edit section: Return value">edit</a>]</span> <span class="mw-headline" id="Return_value">Return value</span></h3>
+<p><span class="mw-geshi cpp source-cpp"><span class="sy2">*</span>this</span>
+</p>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit&amp;section=3" title="Edit section: Example">edit</a>]</span> <span class="mw-headline" id="Example">Example</span></h3>
+<table class="metadata plainlinks ambox mbox-small-left ambox-notice" style=""><tr><td class="mbox-empty-cell"></td><td class="mbox-text" style="">This section is incomplete </td></tr></table>
+<h3><span class="editsection">[<a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit&amp;section=4" title="Edit section: See also">edit</a>]</span> <span class="mw-headline" id="See_also">See also</span></h3>
+<table class="dcl-list-begin">
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="tellphtml.html" title="cpp/io/basic ostream/tellp"> <tt><b>tellp</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the output position indicator <br /> <span class="mark">(public member function)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="../basic_istream/tellg.html" title="cpp/io/basic istream/tellg"> <tt><b>tellg</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   returns the input position indicator <br /> <span class="mark">(public member function of <tt>std::basic_istream</tt>)</span>
+</td></tr>
+
+<tr>
+<td colspan="2" class="dcl-list-sep">
+</td></tr>
+<tr>
+<td class="dcl-list-item-col1">  <table class="member-table"><tr><td class="member-cell1"><a href="../basic_istream/seekg.html" title="cpp/io/basic istream/seekg"> <tt><b>seekg</b></tt> </a></td></tr></table>
+</td><td class="dcl-list-item-col2">   sets the input position indicator <br /> <span class="mark">(public member function of <tt>std::basic_istream</tt>)</span>
+</td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 2644/1000000
+Post-expand include size: 59136/2097152 bytes
+Template argument size: 25003/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mwiki1-mwiki_en_:pcache:idhash:551-0!1!0!!en!2 and timestamp 20110915153650 -->
+<div class="printfooter">
+Retrieved from "<a href="seekp.html">http://en.cppreference.com/w/cpp/io/basic_ostream/seekp</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+					<li  id="pt-login"><a href="http://en.cppreference.com/mwiki/index.php?title=Special:UserLogin&amp;returnto=cpp/io/basic_ostream/seekp" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><a href="seekp.html"  title="View the content page [c]" accesskey="c"><span>Page</span></a></li>
+					<li  id="ca-talk" class="new"><a href="http://en.cppreference.com/mwiki/index.php?title=Talk:cpp/io/basic_ostream/seekp&amp;action=edit&amp;redlink=1"  title="Discussion about the content page [t]" accesskey="t"><span>Discussion</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><a href="seekp.html" ><span>Read</span></a></li>
+					<li id="ca-edit"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=edit"  title="You can edit this page. Please use the preview button before saving [e]" accesskey="e"><span>Edit</span></a></li>
+					<li id="ca-history" class="collapsible "><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;action=history"  title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://en.cppreference.com/mwiki/index.php" id="searchform">
+		<input type='hidden' name="title" value="Special:Search"/>
+				<input id="searchInput" name="search" type="text"  title="Search Cppreference [f]" accesskey="f"  value="" />
+		<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />
+		<input type="submit" name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../../mwiki/skins/common/images/wiki.png);" href="../../../cpp.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="../../../cpp.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+					<li id="n-recentchanges"><a href="http://en.cppreference.com/w/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+					<li id="n-help"><a href="http://en.cppreference.com/w/Help:Contents" title="The place to find out">Help</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="http://en.cppreference.com/w/Special:WhatLinksHere/cpp/io/basic_ostream/seekp" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="http://en.cppreference.com/w/Special:RecentChangesLinked/cpp/io/basic_ostream/seekp" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+																																					<li id="t-upload"><a href="http://upload.cppreference.com/w/Special:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+											<li id="t-specialpages"><a href="http://en.cppreference.com/w/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+									<li id="t-print"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+						<li id="t-permalink"><a href="http://en.cppreference.com/mwiki/index.php?title=cpp/io/basic_ostream/seekp&amp;oldid=7982" title="Permanent link to this revision of the page">Permanent link</a></li>
+						</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>In other languages</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-ar"><a href="http://ar.cppreference.com/w/cpp/io/basic_ostream/seekp">العربية</a></li>
+					<li class="interwiki-pt-br"><a href="http://pt-br.cppreference.com/w/cpp/io/basic_ostream/seekp">Português do Brasil</a></li>
+					<li class="interwiki-zh"><a href="http://zh.cppreference.com/w/cpp/io/basic_ostream/seekp">中文</a></li>
+					<li class="interwiki-cs"><a href="http://cs.cppreference.com/w/cpp/io/basic_ostream/seekp">Česky</a></li>
+					<li class="interwiki-de"><a href="http://de.cppreference.com/w/cpp/io/basic_ostream/seekp">Deutsch</a></li>
+					<li class="interwiki-es"><a href="http://es.cppreference.com/w/cpp/io/basic_ostream/seekp">Español</a></li>
+					<li class="interwiki-fr"><a href="http://fr.cppreference.com/w/cpp/io/basic_ostream/seekp">Français</a></li>
+					<li class="interwiki-it"><a href="http://it.cppreference.com/w/cpp/io/basic_ostream/seekp">Italiano</a></li>
+					<li class="interwiki-ja"><a href="http://ja.cppreference.com/w/cpp/io/basic_ostream/seekp">日本語</a></li>
+					<li class="interwiki-lv"><a href="http://lv.cppreference.com/w/cpp/io/basic_ostream/seekp">Latviešu</a></li>
+					<li class="interwiki-nl"><a href="http://nl.cppreference.com/w/cpp/io/basic_ostream/seekp">Nederlands</a></li>
+					<li class="interwiki-pl"><a href="http://pl.cppreference.com/w/cpp/io/basic_ostream/seekp">Polski</a></li>
+					<li class="interwiki-ro"><a href="http://ro.cppreference.com/w/cpp/io/basic_ostream/seekp">Română</a></li>
+					<li class="interwiki-ru"><a href="http://ru.cppreference.com/w/cpp/io/basic_ostream/seekp">Русский</a></li>
+					<li class="interwiki-tr"><a href="http://tr.cppreference.com/w/cpp/io/basic_ostream/seekp">Türkçe</a></li>
+					<li class="interwiki-tw"><a href="http://tw.cppreference.com/w/cpp/io/basic_ostream/seekp">Twi</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> This page was last modified on 3 August 2011, at 02:13.</li>
+																							<li id="footer-info-viewcount">This page has been accessed 618 times.</li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://en.cppreference.com/w/Cppreference:Privacy_policy" title="Cppreference:Privacy policy">Privacy policy</a></li>
+																							<li id="footer-places-about"><a href="http://en.cppreference.com/w/Cppreference:About" title="Cppreference:About">About Cppreference</a></li>
+																							<li id="footer-places-disclaimer"><a href="http://en.cppreference.com/w/Cppreference:General_disclaimer" title="Cppreference:General disclaimer">Disclaimers</a></li>
+															</ul>
+										<ul id="footer-icons" class="noprint">
+								<li id="footer-icon-poweredby"><a href="http://www.mediawiki.org/"><img src="../../../../mwiki/skins/common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></li>
+											</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		
+<script>if (window.runOnloadHook) runOnloadHook();</script>
+		<!-- Served in 1.052 secs. -->			</body>
+<!-- Cached 20110915153653 -->
+
+<!-- Mirrored from en.cppreference.com/w/cpp/io/basic_ostream/seekp by HTTrack Website Copier/3.x [XR&CO'2010], Thu, 15 Sep 2011 16:11:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+</html>
