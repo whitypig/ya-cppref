@@ -97,8 +97,8 @@
   (gethash key tbl nil))
 
 (defun cppref-get-all-html (docroot)
-  "Get all html files under the DOCROOT and return them as a
-list."
+  "Get all html files under the DOCROOT including its
+subdirectories and return them as a list."
   (flet ((f (l)
             (mapcan (lambda (e)
                       (if (file-directory-p e)
