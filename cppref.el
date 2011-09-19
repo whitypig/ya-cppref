@@ -40,6 +40,9 @@
 ;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;
 (defvar cppref-mapping-to-html-hash-table (make-hash-table :test 'equal))
 
+(defvar cppref-node-names nil
+  "A list containing all node names, i.e. insert, remove_if,...")
+
 (defvar cppref-path-to-container "w/cpp/container/"
   "")
 
@@ -78,11 +81,15 @@
 
 ;;;;;;;;;;;;;;;;;;;; Functions ;;;;;;;;;;;;;;;;;;;;
 (defun cppref-init (root tbl)
+  "Return a hash table with its contents being `(node . (path1
+path2))'."
   (let ((dir (concat root "en.cppreference.com/w/")))
     ;; index.html has no corresponding class name.
     (push `(nil . ,(expand-file-name (concat dir "index.html"))) (gethash "index" tbl))
-    (cppref-insert-html-into-table root tbl)
-    tbl))
+    ;; Put all the paths to html files under the root.
+    (setq cppref-mapping-to-html-hash-table
+          (cppref-insert-html-into-table root tbl))
+    (setq cppref-node-names (cppref-get-all-node-names tbl))))
 
 (defun cppref-insert-html-into-table (docroot tbl)
   "DOCROOT should end with `reference/'."
@@ -111,13 +118,40 @@ subdirectories and return them as a list."
           #'string<)))
 
 (defun cppref-get-parent-directory (path)
+  "Return the name of the parent directory of PAHT."
   (when (and (string-match "\\.html$" path)
              (string-match ".*/\\([^/]+\\)/[^/]+\\.html$" path))
     (match-string-no-properties 1 path)))
 
 (defun cppref-get-node-name (path)
+  "Return the node name of PATH, i.e. the file name without its
+extension."
   (when (string-match "\\([^/]+\\)\\.html$" path)
     (match-string-no-properties 1 path)))
+
+(defun cppref-get-all-node-names (table)
+  "Return a list of names of nodes in hash table TABLE."
+  (let ((keys nil))
+    (flet ((f (k v)
+              (push k keys)))
+      (maphash #'f table))
+    (sort keys #'string<)))
+
+(defun cppref-read-node-name-from-minibuffer (name)
+  "Read from minibuffer the name to search for."
+  (interactive `,(completing-read "cppref: " cppref-node-names nil t))
+  (or name "index"))
+
+(defun cppref-get-path-to-visit (name table)
+  "Return a path to a html file to visit."
+  (let ((lst (cppref-name-to-html name table)))
+    (if (= 1 (length lst))
+        (car lst)
+      (progn
+        (let* ((classes (sort (mapcar #'car lst) #'string<))
+               (class (completing-read (format "`%s' in: " name)
+                                       classes nil t)))
+          (cdr (assoc class lst)))))))
 
 (provide 'cppref)
 ;;; cppref.el ends here
