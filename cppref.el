@@ -43,42 +43,6 @@
 (defvar cppref-node-names nil
   "A list containing all node names, i.e. insert, remove_if,...")
 
-(defvar cppref-path-to-container "w/cpp/container/"
-  "")
-
-(defvar cppref-path-to-algorithm "w/cpp/algorithm/"
-  "")
-
-(defvar cppref-path-to-error "w/cpp/error/"
-  "")
-
-(defvar cppref-path-to-io "w/cpp/io/"
-  "")
-
-(defvar cppref-path-to-iterator "w/cpp/iterator/"
-  "")
-
-(defvar cppref-path-to-memory "w/cpp/memory/"
-  "")
-
-(defvar cppref-path-to-numberic "w/cpp/numeric/"
-  "")
-
-(defvar cppref-path-to-regex "w/cpp/regex/"
-  "")
-
-(defvar cppref-path-to-string "w/cpp/string/"
-  "")
-
-(defvar cppref-path-to-thread "w/cpp/thread/"
-  "")
-
-(defvar cppref-path-to-types "w/cpp/types/"
-  "")
-
-(defvar cppref-path-to-utility "w/cpp/utility/"
-  "")
-
 ;;;;;;;;;;;;;;;;;;;; Functions ;;;;;;;;;;;;;;;;;;;;
 (defun cppref-init (root tbl)
   "Return a hash table with its contents being `(node . (path1
