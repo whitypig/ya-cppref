@@ -33,7 +33,8 @@
   :group 'convenience)
 
 (defcustom cppref-path-to-doc-root nil
-  "The path name to the root directory of references."
+  "The path name to the root directory of references.
+This should end with `reference/'."
   :type 'directory
   :group 'cppref)
 
