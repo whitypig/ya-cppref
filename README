@@ -1,0 +1,39 @@
+Prerequisites:
+To use cppref.el, you need to have w3m and emacs-w3m installed in
+your system.  You need also to get cppreference.com
+reference, inflating it, and put it in your system.
+The document of cppreference.com is available on
+http://en.cppreference.com/w/Cppreference:Archives
+
+Installation:
+Put cppref.el in the directory which is included in load path, and
+add the following to your emacs setting file:
+(require 'cppref)
+
+Also you need to specify the root directory of documents in your
+emacs setting file.
+The below is a few examples.
+If you place the documents in /usr/local/doc/cpp, then
+(setq cppref-path-to-doc-root "/usr/local/doc/cpp/reference/")
+
+If you place the documents in ~/doc/cppreference, then
+(setq cppref-path-to-doc-root "~/doc/cppreference/reference/")
+
+Please note that the path should end with `/', and the reference
+directory above is the root direcotry in the zip file.
+
+Usage scenario:
+* Searching for the doc about vector::push_back
+M-x cppref [RET]
+cppref: push_back [RET]       ; type push_back
+`push_back' in: vector [RET]  ; choose class.
+
+* Searching for the doc about list
+M-x cppref [RET]
+cppref: list [RET]            ; type list
+`list' in: container [RET]    ; choose container
+
+Note that when you type function names or class names, completion
+is available.
+
+I hope this will help. Thanks.
