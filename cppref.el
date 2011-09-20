@@ -32,7 +32,7 @@
   :prefix "cppref"
   :group 'convenience)
 
-(defcustom cppref-path-to-doc-root "./doc/reference/"
+(defcustom cppref-path-to-doc-root nil
   "The path name to the root directory of references."
   :type 'directory
   :group 'cppref)
@@ -167,6 +167,7 @@ extension."
     (ignore-errors
       (goto-char (point-min))
       (goto-char (or (save-excursion (re-search-forward "^Defined in" nil t))
+                     (save-excursion (search-forward (concat name "(") nil t))
                      (save-excursion (re-search-forward "^Member functions" nil t))
                      (save-excursion (re-search-forward "^Contents" nil t)))))))
 
