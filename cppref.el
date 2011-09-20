@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -38,7 +38,8 @@
   :group 'cppref)
 
 ;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;
-(defvar cppref-mapping-to-html-hash-table (make-hash-table :test 'equal))
+(defvar cppref-mapping-to-html-hash-table (make-hash-table :test 'equal)
+  "node => ((class1 . path1) (class2 . path2)...")
 
 (defvar cppref-node-names nil
   "A list containing all node names, i.e. insert, remove_if,...")
@@ -50,18 +51,26 @@
   "Return a hash table with its contents being `(node . (path1
 path2))'."
   (let ((dir (concat cppref-path-to-doc-root "en.cppreference.com/w/")))
-    (setq cppref-mapping-to-html-hash-table (make-hash-table :test #'equal))
-    ;; index.html has no corresponding class name.
-    (push `(,cppref-dummy-key . ,(expand-file-name
-                                          (concat dir "index.html")))
-          (gethash cppref-dummy-key cppref-mapping-to-html-hash-table))
     ;; Put all the paths to html files under the root.
-    (setq cppref-mapping-to-html-hash-table
-          (cppref-insert-html-into-table cppref-path-to-doc-root
-                                         cppref-mapping-to-html-hash-table))
-    (message "Debug: %s" (hash-table-size cppref-mapping-to-html-hash-table))
-    (setq cppref-node-names (cppref-get-all-node-names cppref-mapping-to-html-hash-table))
+    (cppref-init-hash-table)
+    (cppref-init-node-names)
     cppref-mapping-to-html-hash-table))
+
+(defun cppref-init-hash-table ()
+  (unless (and cppref-mapping-to-html-hash-table
+               (hash-table-p cppref-mapping-to-html-hash-table)
+               (< 66 (hash-table-size cppref-mapping-to-html-hash-table)))
+    (let* ((dir (concat cppref-path-to-doc-root "en.cppreference.com/w/"))
+           (index-path (expand-file-name (concat dir "index.html"))))
+      (setq cppref-mapping-to-html-hash-table (make-hash-table :test #'equal))
+      (push `(,cppref-dummy-key . ,index-path)
+            (gethash cppref-dummy-key cppref-mapping-to-html-hash-table))
+      (push `("index" . ,index-path)
+            (gethash "index" cppref-mapping-to-html-hash-table))
+      (setq cppref-mapping-to-html-hash-table
+            (cppref-insert-html-into-table
+             cppref-path-to-doc-root
+             cppref-mapping-to-html-hash-table)))))
 
 (defun cppref-insert-html-into-table (docroot tbl)
   "DOCROOT should end with `reference/'."
@@ -70,6 +79,13 @@ path2))'."
       (push `(,(cppref-get-parent-directory f) . ,f)
             (gethash (cppref-get-node-name f) tbl)))
     tbl))
+
+(defun cppref-init-node-names ()
+  (unless (and cppref-node-names
+               (listp cppref-node-names)
+               (< 2 (length cppref-node-names)))
+    (setq cppref-node-names
+          (cppref-get-all-node-names cppref-mapping-to-html-hash-table))))
 
 (defun cppref-name-to-html (key tbl)
   (let ((k (if (string= "index" key) cppref-dummy-key
@@ -100,7 +116,9 @@ subdirectories and return them as a list."
   "Return the node name of PATH, i.e. the file name without its
 extension."
   (when (string-match "\\([^/]+\\)\\.html$" path)
-    (match-string-no-properties 1 path)))
+    ;; Remove the trailing html if any.
+    (replace-regexp-in-string "html$" ""
+                              (match-string-no-properties 1 path))))
 
 (defun cppref-get-all-node-names (table)
   "Return a list of names of nodes in hash table TABLE."
@@ -121,8 +139,11 @@ extension."
   "Return a path to a html file to visit."
   (let ((lst (cppref-name-to-html name table)))
     (cond
-     ((string= "index" name) (cdr (assoc cppref-dummy-key lst)))
-     ((= 1 (length lst)) (car lst))
+     ((null lst) (message "Sorry, but no entry found"))
+     ((or (string= "index" name)
+          (string= cppref-dummy-key name))
+      (cdr (assoc cppref-dummy-key lst)))
+     ((= 1 (length lst)) (cdar lst))
      (t
       (let* ((classes (sort (mapcar #'car lst) #'string<))
              (class (completing-read (format "`%s' in: " name)
@@ -136,12 +157,18 @@ extension."
 
 (defun cppref ()
   (interactive)
-  (let ((path nil))
+  (let ((path nil) (name nil))
     (cppref-init)
+    (setq name (cppref-read-node-name-from-minibuffer))
     (setq path (cppref-get-path-to-visit
-                (cppref-read-node-name-from-minibuffer)
+                name
                 cppref-mapping-to-html-hash-table))
-    (w3m-find-file path)))
+    (w3m-find-file path)
+    (ignore-errors
+      (goto-char (point-min))
+      (goto-char (or (save-excursion (re-search-forward "^Defined in" nil t))
+                     (save-excursion (re-search-forward "^Member functions" nil t))
+                     (save-excursion (re-search-forward "^Contents" nil t)))))))
 
 (provide 'cppref)
 ;;; cppref.el ends here
