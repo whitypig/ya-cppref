@@ -134,7 +134,9 @@ path2))'."
           (cppref-get-all-node-names cppref-mapping-to-html-hash-table))))
 
 (defun cppref-name-to-html (key tbl)
-  (let ((k (if (string= "index" key) cppref-dummy-key
+  (let ((k (if (or (string= "index" key)
+                   (string= "" key))
+               cppref-dummy-key
              key)))
     (gethash k tbl nil)))
 
