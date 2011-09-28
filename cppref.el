@@ -76,6 +76,13 @@ This should end with `reference/'."
   :type 'directory
   :group 'cppref)
 
+(defcustom cppref-split-window-horizontal t
+  "Specify which way to split window when opening a reference.
+If you want to split the window vertically, set this variable
+`nil'. The default is `t'"
+  :type 'boolean
+  :group 'cppref)
+
 ;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;
 (defvar cppref-mapping-to-html-hash-table (make-hash-table :test 'equal)
   "node => ((class1 . path1) (class2 . path2)...")
@@ -202,6 +209,16 @@ extension."
     (setq path (cppref-get-path-to-visit
                 name
                 cppref-mapping-to-html-hash-table))
+    (cppref-visit-reference path)))
+
+
+(defun cppref-visit-reference (path)
+  (let ((w (get-buffer-window "*w3m*")))
+    (unless w
+      (if (one-window-p)
+          (setq w (split-window nil nil cppref-split-window-horizontal))
+        (setq w (next-window))))
+    (select-window w)
     (w3m-find-file path)
     (ignore-errors
       (goto-char (point-min))
