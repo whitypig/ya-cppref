@@ -36,10 +36,10 @@
 ;; emacs setting file.
 ;; The below is a few examples.
 ;; If you place the documents in /usr/local/doc/cpp, then
-;; (setq cppref-path-to-doc-root "/usr/local/doc/cpp/reference/")
+;; (setq ya-cppref-path-to-doc-root "/usr/local/doc/cpp/reference/")
 ;;
 ;; If you place the documents in ~/doc/cppreference, then
-;; (setq cppref-path-to-doc-root "~/doc/cppreference/reference/")
+;; (setq ya-cppref-path-to-doc-root "~/doc/cppreference/reference/")
 ;;
 ;; Please note that the path should end with `/', and the reference
 ;; directory above is the root direcotry in the zip file.
@@ -70,13 +70,13 @@
   :prefix "cppref"
   :group 'convenience)
 
-(defcustom cppref-path-to-doc-root nil
+(defcustom ya-cppref-path-to-doc-root nil
   "The path name to the root directory of references.
 This should end with `reference/'."
   :type 'directory
   :group 'cppref)
 
-(defcustom cppref-split-window-horizontal t
+(defcustom ya-cppref-split-window-horizontal t
   "Specify which way to split window when opening a reference.
 If you want to split the window vertically, set this variable
 `nil'. The default is `t'"
@@ -84,63 +84,63 @@ If you want to split the window vertically, set this variable
   :group 'cppref)
 
 ;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;
-(defvar cppref-mapping-to-html-hash-table (make-hash-table :test 'equal)
+(defvar ya-cppref-mapping-to-html-hash-table (make-hash-table :test 'equal)
   "node => ((class1 . path1) (class2 . path2)...")
 
-(defvar cppref-node-names nil
+(defvar ya-cppref-node-names nil
   "A list containing all node names, i.e. insert, remove_if,...")
 
-(defvar cppref-dummy-key "cppref-index")
+(defvar ya-cppref-dummy-key "ya-cppref-index")
 
 ;;;;;;;;;;;;;;;;;;;; Functions ;;;;;;;;;;;;;;;;;;;;
-(defun cppref-init ()
+(defun ya-cppref-init ()
   "Return a hash table with its contents being `(node . (path1
 path2))'."
-  (let ((dir (concat cppref-path-to-doc-root "en.cppreference.com/w/")))
+  (let ((dir (concat ya-cppref-path-to-doc-root "en.cppreference.com/w/")))
     ;; Put all the paths to html files under the root.
-    (cppref-init-hash-table)
-    (cppref-init-node-names)
-    cppref-mapping-to-html-hash-table))
+    (ya-cppref-init-hash-table)
+    (ya-cppref-init-node-names)
+    ya-cppref-mapping-to-html-hash-table))
 
-(defun cppref-init-hash-table ()
-  (unless (and cppref-mapping-to-html-hash-table
-               (hash-table-p cppref-mapping-to-html-hash-table)
-               (< 66 (hash-table-size cppref-mapping-to-html-hash-table)))
-    (let* ((dir (concat cppref-path-to-doc-root "en.cppreference.com/w/"))
+(defun ya-cppref-init-hash-table ()
+  (unless (and ya-cppref-mapping-to-html-hash-table
+               (hash-table-p ya-cppref-mapping-to-html-hash-table)
+               (< 66 (hash-table-size ya-cppref-mapping-to-html-hash-table)))
+    (let* ((dir (concat ya-cppref-path-to-doc-root "en.cppreference.com/w/"))
            (index-path (expand-file-name (concat dir "index.html"))))
-      (setq cppref-mapping-to-html-hash-table (make-hash-table :test #'equal))
-      (push `(,cppref-dummy-key . ,index-path)
-            (gethash cppref-dummy-key cppref-mapping-to-html-hash-table))
+      (setq ya-cppref-mapping-to-html-hash-table (make-hash-table :test #'equal))
+      (push `(,ya-cppref-dummy-key . ,index-path)
+            (gethash ya-cppref-dummy-key ya-cppref-mapping-to-html-hash-table))
       (push `("index" . ,index-path)
-            (gethash "index" cppref-mapping-to-html-hash-table))
-      (setq cppref-mapping-to-html-hash-table
-            (cppref-insert-html-into-table
-             cppref-path-to-doc-root
-             cppref-mapping-to-html-hash-table)))))
+            (gethash "index" ya-cppref-mapping-to-html-hash-table))
+      (setq ya-cppref-mapping-to-html-hash-table
+            (ya-cppref-insert-html-into-table
+             ya-cppref-path-to-doc-root
+             ya-cppref-mapping-to-html-hash-table)))))
 
-(defun cppref-insert-html-into-table (docroot tbl)
+(defun ya-cppref-insert-html-into-table (docroot tbl)
   "DOCROOT should end with `reference/'."
-  (let ((files (cppref-get-all-html docroot)))
+  (let ((files (ya-cppref-get-all-html docroot)))
     (dolist (f files)
-      (push `(,(cppref-get-parent-directory f) . ,f)
-            (gethash (cppref-get-node-name f) tbl)))
+      (push `(,(ya-cppref-get-parent-directory f) . ,f)
+            (gethash (ya-cppref-get-node-name f) tbl)))
     tbl))
 
-(defun cppref-init-node-names ()
-  (unless (and cppref-node-names
-               (listp cppref-node-names)
-               (< 2 (length cppref-node-names)))
-    (setq cppref-node-names
-          (cppref-get-all-node-names cppref-mapping-to-html-hash-table))))
+(defun ya-cppref-init-node-names ()
+  (unless (and ya-cppref-node-names
+               (listp ya-cppref-node-names)
+               (< 2 (length ya-cppref-node-names)))
+    (setq ya-cppref-node-names
+          (ya-cppref-get-all-node-names ya-cppref-mapping-to-html-hash-table))))
 
-(defun cppref-name-to-html (key tbl)
+(defun ya-cppref-name-to-html (key tbl)
   (let ((k (if (or (string= "index" key)
                    (string= "" key))
-               cppref-dummy-key
+               ya-cppref-dummy-key
              key)))
     (gethash k tbl nil)))
 
-(defun cppref-get-all-html (docroot)
+(defun ya-cppref-get-all-html (docroot)
   "Get all html files under the DOCROOT including its
 subdirectories and return them as a list."
   (flet ((f (l)
@@ -154,13 +154,13 @@ subdirectories and return them as a list."
                         "[^.]$"))
           #'string<)))
 
-(defun cppref-get-parent-directory (path)
+(defun ya-cppref-get-parent-directory (path)
   "Return the name of the parent directory of PAHT."
   (when (and (string-match "\\.html$" path)
              (string-match ".*/\\([^/]+\\)/[^/]+\\.html$" path))
     (match-string-no-properties 1 path)))
 
-(defun cppref-get-node-name (path)
+(defun ya-cppref-get-node-name (path)
   "Return the node name of PATH, i.e. the file name without its
 extension."
   (when (string-match "\\([^/]+\\)\\.html$" path)
@@ -168,7 +168,7 @@ extension."
     (replace-regexp-in-string "html$" ""
                               (match-string-no-properties 1 path))))
 
-(defun cppref-get-all-node-names (table)
+(defun ya-cppref-get-all-node-names (table)
   "Return a list of names of nodes in hash table TABLE."
   (let ((keys nil))
     (flet ((f (k v)
@@ -176,21 +176,21 @@ extension."
       (maphash #'f table))
     (sort keys #'string<)))
 
-(defun cppref-read-node-name-from-minibuffer (&optional name)
+(defun ya-cppref-read-node-name-from-minibuffer (&optional name)
   "Read from minibuffer the name to search for."
-  (let ((name (or name (completing-read "cppref: " cppref-node-names nil t))))
+  (let ((name (or name (completing-read "cppref: " ya-cppref-node-names nil t))))
     (if (or (null name) (string= "index" name))
-        cppref-dummy-key
+        ya-cppref-dummy-key
       name)))
 
-(defun cppref-get-path-to-visit (name table)
+(defun ya-cppref-get-path-to-visit (name table)
   "Return a path to a html file to visit."
-  (let ((lst (cppref-name-to-html name table)))
+  (let ((lst (ya-cppref-name-to-html name table)))
     (cond
      ((null lst) (message "Sorry, but no entry found"))
      ((or (string= "index" name)
-          (string= cppref-dummy-key name))
-      (cdr (assoc cppref-dummy-key lst)))
+          (string= ya-cppref-dummy-key name))
+      (cdr (assoc ya-cppref-dummy-key lst)))
      ((= 1 (length lst)) (cdar lst))
      (t
       (let* ((classes (sort (mapcar #'car lst) #'string<))
@@ -198,27 +198,27 @@ extension."
                                      classes nil t)))
         (cdr (assoc class lst)))))))
 
-(defun cppref-clear ()
+(defun ya-cppref-clear ()
   (interactive)
-  (setq cppref-mapping-to-html-hash-table nil
-        cppref-node-names nil))
+  (setq ya-cppref-mapping-to-html-hash-table nil
+        ya-cppref-node-names nil))
 
 (defun cppref ()
   (interactive)
   (let ((path nil) (name nil))
-    (cppref-init)
-    (setq name (cppref-read-node-name-from-minibuffer))
-    (setq path (cppref-get-path-to-visit
+    (ya-cppref-init)
+    (setq name (ya-cppref-read-node-name-from-minibuffer))
+    (setq path (ya-cppref-get-path-to-visit
                 name
-                cppref-mapping-to-html-hash-table))
-    (cppref-visit-reference path)))
+                ya-cppref-mapping-to-html-hash-table))
+    (ya-cppref-visit-reference path)))
 
 
-(defun cppref-visit-reference (path)
+(defun ya-cppref-visit-reference (path)
   (let ((w (get-buffer-window "*w3m*")))
     (unless w
       (if (one-window-p)
-          (setq w (split-window nil nil cppref-split-window-horizontal))
+          (setq w (split-window nil nil ya-cppref-split-window-horizontal))
         (setq w (next-window))))
     (select-window w)
     (w3m-find-file path)
@@ -229,5 +229,5 @@ extension."
                      (save-excursion (re-search-forward "^Member functions" nil t))
                      (save-excursion (re-search-forward "^Contents" nil t)))))))
 
-(provide 'cppref)
+(provide 'ya-cppref)
 ;;; cppref.el ends here
