@@ -1,4 +1,4 @@
-;;; cppref.el --- An interface using w3m with cppreference.com references on Emacs
+;;; ya-cppref.el --- An interface using w3m with cppreference.com references on Emacs
 
 ;; Copyright (C) 2011  whitypig
 
@@ -21,16 +21,16 @@
 ;;; Commentary:
 
 ;; Prerequisites:
-;; To use cppref.el, you need to have w3m and emacs-w3m installed in
-;; your system.  You need also to get cppreference.com
-;; reference, inflating it, and put it in your system.
-;; The document of cppreference.com is available on
+;; To use ya-cppref.el, you need to have w3m and emacs-w3m installed
+;; in your system.  You need also to get cppreference.com reference,
+;; inflating it, and put it in your system.  The document of
+;; cppreference.com is available on
 ;; http://en.cppreference.com/w/Cppreference:Archives
 
 ;; Installation:
-;; Put cppref.el in the directory which is included in load path, and
-;; add the following to your emacs setting file:
-;; (require 'cppref)
+;; Put ya-cppref.el in the directory which is included in load path,
+;; and add the following to your emacs setting file:
+;; (require 'ya-cppref)
 ;;
 ;; Also you need to specify the root directory of documents in your
 ;; emacs setting file.
@@ -46,13 +46,13 @@
 ;;
 ;; Usage scenario:
 ;; * Searching for the doc about vector::push_back
-;; M-x cppref [RET]
-;; cppref: push_back [RET]       ; type push_back
+;; M-x ya-cppref [RET]
+;; ya-cppref: push_back [RET]    ; type push_back
 ;; `push_back' in: vector [RET]  ; choose class.
 ;;
 ;; * Searching for the doc about list
-;; M-x cppref [RET]
-;; cppref: list [RET]            ; type list
+;; M-x ya-cppref [RET]
+;; ya-cppref: list [RET]         ; type list
 ;; `list' in: container [RET]    ; choose container
 
 ;; Note that when you type function names or class names, completion
@@ -65,23 +65,23 @@
 (require 'w3m)
 
 ;;;;;;;;;;;;;;;;;;;; Customize ;;;;;;;;;;;;;;;;;;;;
-(defgroup cppref nil
+(defgroup ya-cppref nil
   "Elisp for viewing cppreference.com references in Emacs."
-  :prefix "cppref"
+  :prefix "ya-cppref"
   :group 'convenience)
 
 (defcustom ya-cppref-path-to-doc-root nil
   "The path name to the root directory of references.
 This should end with `reference/'."
   :type 'directory
-  :group 'cppref)
+  :group 'ya-cppref)
 
 (defcustom ya-cppref-split-window-horizontal t
   "Specify which way to split window when opening a reference.
 If you want to split the window vertically, set this variable
 `nil'. The default is `t'"
   :type 'boolean
-  :group 'cppref)
+  :group 'ya-cppref)
 
 ;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;
 (defvar ya-cppref-mapping-to-html-hash-table (make-hash-table :test 'equal)
@@ -178,7 +178,7 @@ extension."
 
 (defun ya-cppref-read-node-name-from-minibuffer (&optional name)
   "Read from minibuffer the name to search for."
-  (let ((name (or name (completing-read "cppref: " ya-cppref-node-names nil t))))
+  (let ((name (or name (completing-read "ya-cppref: " ya-cppref-node-names nil t))))
     (if (or (null name) (string= "index" name))
         ya-cppref-dummy-key
       name)))
@@ -203,7 +203,7 @@ extension."
   (setq ya-cppref-mapping-to-html-hash-table nil
         ya-cppref-node-names nil))
 
-(defun cppref ()
+(defun ya-cppref ()
   (interactive)
   (let ((path nil) (name nil))
     (ya-cppref-init)
@@ -230,4 +230,4 @@ extension."
                      (save-excursion (re-search-forward "^Contents" nil t)))))))
 
 (provide 'ya-cppref)
-;;; cppref.el ends here
+;;; ya-cppref.el ends here
