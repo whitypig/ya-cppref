@@ -83,6 +83,7 @@ If you want to split the window vertically, set this variable
   :type 'boolean
   :group 'ya-cppref)
 
+
 ;;;;;;;;;;;;;;;;;;;; Variables ;;;;;;;;;;;;;;;;;;;;
 (defvar ya-cppref-mapping-to-html-hash-table (make-hash-table :test 'equal)
   "node => ((class1 . path1) (class2 . path2)...")
@@ -92,11 +93,14 @@ If you want to split the window vertically, set this variable
 
 (defvar ya-cppref-dummy-key "ya-cppref-index")
 
+(defconst ya-cppref-en-docroot "en.cppreference.com/w/")
+(defconst ya-cppref-en-cpp-docroot (concat ya-cppref-en-docroot "cpp/"))
+
 ;;;;;;;;;;;;;;;;;;;; Functions ;;;;;;;;;;;;;;;;;;;;
 (defun ya-cppref-init ()
   "Return a hash table with its contents being `(node . (path1
 path2))'."
-  (let ((dir (concat ya-cppref-path-to-doc-root "en.cppreference.com/w/")))
+  (let ((dir (concat ya-cppref-path-to-doc-root ya-cppref-en-docroot)))
     ;; Put all the paths to html files under the root.
     (ya-cppref-init-hash-table)
     (ya-cppref-init-node-names)
@@ -106,7 +110,7 @@ path2))'."
   (unless (and ya-cppref-mapping-to-html-hash-table
                (hash-table-p ya-cppref-mapping-to-html-hash-table)
                (< 66 (hash-table-size ya-cppref-mapping-to-html-hash-table)))
-    (let* ((dir (concat ya-cppref-path-to-doc-root "en.cppreference.com/w/"))
+    (let* ((dir (concat ya-cppref-path-to-doc-root ya-cppref-en-docroot))
            (index-path (expand-file-name (concat dir "index.html"))))
       (setq ya-cppref-mapping-to-html-hash-table (make-hash-table :test #'equal))
       (push `(,ya-cppref-dummy-key . ,index-path)
@@ -149,7 +153,7 @@ subdirectories and return them as a list."
                           (f (directory-files e t "[^.]$"))
                         (list e)))
                     l)))
-    (sort (f (directory-files (expand-file-name (concat docroot "en.cppreference.com/w/cpp/"))
+    (sort (f (directory-files (expand-file-name (concat docroot ya-cppref-en-docroot "cpp/"))
                         t
                         "[^.]$"))
           #'string<)))
