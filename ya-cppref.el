@@ -153,7 +153,7 @@ subdirectories and return them as a list."
                           (f (directory-files e t "[^.]$"))
                         (list e)))
                     l)))
-    (sort (f (directory-files (expand-file-name (concat docroot ya-cppref-en-docroot "cpp/"))
+    (sort (f (directory-files (expand-file-name (concat docroot ya-cppref-en-cpp-docroot))
                         t
                         "[^.]$"))
           #'string<)))
