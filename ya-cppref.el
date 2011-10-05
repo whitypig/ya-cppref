@@ -63,6 +63,8 @@
 ;;; Code:
 
 (require 'w3m)
+(eval-when-compile
+  (require 'cl))
 
 ;;;;;;;;;;;;;;;;;;;; Customize ;;;;;;;;;;;;;;;;;;;;
 (defgroup ya-cppref nil
